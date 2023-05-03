@@ -1,0 +1,23 @@
+{
+    "Update Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# update the victim ip address",
+            "# Note:",
+            "#   ip is just one of the many properties that can be updated, each victim type",
+            "#   has different properties that can be updated.",
+            "victim.model.phone = phone_number  # 1800-867-5309",
+            "",
+            "# update the victim in ThreatConnect",
+            "victim.update()"
+        ],
+        "description": "This snippet will update a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-update-victim"
+        ],
+        "scope": "python"
+    }
+}

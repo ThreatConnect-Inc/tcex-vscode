@@ -1,0 +1,94 @@
+{
+    "Get Victim by ID": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "# to pull addition fields use the params argument",
+            "# (e.g., params={'fields': ['attributes']})",
+            "victim.get()"
+        ],
+        "description": "This snippet will get a victim from ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-by-id"
+        ],
+        "scope": "python"
+    },
+    "Get Victim by name": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims(params={'owner': owner_name})",
+            "",
+            "# IMPORTANT: Summary is just one of many fields that can be used to filter victims.",
+            "victims.filter.summary(TqlOperator.EQ, victim_name)",
+            "",
+            "# WARNING:",
+            "#     this could return multiple victims depending on which filters are applied",
+            "for victim in victims:",
+            "    print(victim.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will get victims from ThreatConnect using the provide name and owner.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-by-name"
+        ],
+        "scope": "python"
+    },
+    "Get Victim by TQL": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims()",
+            "victims.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{victim_name}\"'",
+            "",
+            "for victim in victims:",
+            "    print(victim.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will retrieve one or more victim in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-by-tql"
+        ],
+        "scope": "python"
+    },
+    "Filter Victim": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims()",
+            "",
+            "victims.filter.asset_name_string(TQLOperator.EQ, asset_name_string)",
+            "victims.filter.asset_type_integer(TQLOperator.EQ, asset_type_integer)",
+            "victims.filter.asset_typename_string(TQLOperator.EQ, asset_typename_string)",
+            "victims.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "victims.filter.description_string(TQLOperator.EQ, description_string)",
+            "victims.filter.has_attribute_integer(TQLOperator.EQ, has_attribute_integer)",
+            "victims.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "victims.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "victims.filter.has_security_label_integer(TQLOperator.EQ, has_security_label_integer)",
+            "victims.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "victims.filter.has_victim_integer(TQLOperator.EQ, has_victim_integer)",
+            "victims.filter.has_victim_asset_integer(TQLOperator.EQ, has_victim_asset_integer)",
+            "victims.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "victims.filter.name_string(TQLOperator.EQ, name_string)",
+            "victims.filter.nationality_string(TQLOperator.EQ, nationality_string)",
+            "victims.filter.organization_string(TQLOperator.EQ, organization_string)",
+            "victims.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "victims.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "victims.filter.security_label_string(TQLOperator.EQ, security_label_string)",
+            "victims.filter.sub_org_string(TQLOperator.EQ, sub_org_string)",
+            "victims.filter.summary_string(TQLOperator.EQ, summary_string)",
+            "victims.filter.tag_string(TQLOperator.EQ, tag_string)",
+            "victims.filter.tag_owner_integer(TQLOperator.EQ, tag_owner_integer)",
+            "victims.filter.tag_owner_name_string(TQLOperator.EQ, tag_owner_name_string)",
+            "victims.filter.work_location_string(TQLOperator.EQ, work_location_string)",
+            "",
+            "for victim in victims:",
+            "    print(victim.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect victim",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-filter-victim"
+        ],
+        "scope": "python"
+    }
+}

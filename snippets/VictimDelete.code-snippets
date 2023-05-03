@@ -1,0 +1,55 @@
+{
+    "Delete Victim by ID": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "victim.delete()"
+        ],
+        "description": "This snippet will delete a victim in ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-victim-by-id"
+        ],
+        "scope": "python"
+    },
+    "Delete Victim by name": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims()",
+            "",
+            "# IMPORTANT: Name is just one of many fields that can be used to filter victims.",
+            "victims.filter.name(TqlOperator.EQ, victim_name)",
+            "",
+            "# WARNING:",
+            "#     Depending on the filters provided it is not guaranteed that only one victim",
+            "#     will be returned. This could delete multiple victims.",
+            "for victim in victims:",
+            "    # Owner is a optional parameter to specify the owner of the victim to delete.",
+            "    victim.delete(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will delete a victim in ThreatConnect with the provided name.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-victim-by-name"
+        ],
+        "scope": "python"
+    },
+    "Delete Victim by TQL": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims()",
+            "victims.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{victim_name}\"'",
+            "",
+            "# WARNING:",
+            "#     this will delete all victims returned by the TQL",
+            "for victim in victims:",
+            "    victim.delete()"
+        ],
+        "description": "This snippet will delete one or more victim in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-victim-by-tql"
+        ],
+        "scope": "python"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "Download Group Attachment": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "content = group.download()  # file pdf is returned as bytes",
+            "if not group.request.ok:",
+            "    print(f'The download failed: {group.request.reason}')"
+        ],
+        "description": "This snippet will download the content of a group attachment from ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-download-group-attachment"
+        ],
+        "scope": "python"
+    },
+    "Download Group PDF": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "pdf = group.pdf()  # file content is returned as bytes",
+            "if not group.request.ok:",
+            "    print(f'The download failed: {group.request.reason}')"
+        ],
+        "description": "This snippet will download the Group PDF from ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-download-group-pdf"
+        ],
+        "scope": "python"
+    }
+}

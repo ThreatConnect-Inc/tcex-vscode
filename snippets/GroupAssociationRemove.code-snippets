@@ -1,0 +1,42 @@
+{
+    "Remove a Group to Group Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "for association in group.associated_groups:",
+            "    # This can be modified to remove an association based on other attributes.",
+            "    if association.model.id == associated_group_id:",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the association from the group",
+            "        #    the \"delete()\" method will remove the group from the system",
+            "        association.remove()"
+        ],
+        "description": "This snippet will remove a group to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-remove-a-group-to-group-association"
+        ],
+        "scope": "python"
+    },
+    "Remove a Group to Indicator Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "for association in group.associated_indicators:",
+            "    # This can be modified to remove an association based on other attributes.",
+            "    if association.model.id == associated_indicator_id:",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the association from the group",
+            "        #    the \"delete()\" method will remove the indicator from the system",
+            "        association.remove()"
+        ],
+        "description": "This snippet will remove a group to indicator association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-remove-a-group-to-indicator-association"
+        ],
+        "scope": "python"
+    }
+}

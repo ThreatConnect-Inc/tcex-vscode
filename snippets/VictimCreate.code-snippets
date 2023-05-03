@@ -1,0 +1,100 @@
+{
+    "Create Victim": {
+        "body": [
+            "# IMPORTANT:",
+            "#     The victim name is a required field but the victim type supports several",
+            "#     additional optional fields on top of it. Supported fields:",
+            "#         - description",
+            "#         - nationality",
+            "#         - suborg",
+            "#         - type",
+            "#         - work_location",
+            "victim = self.tcex.api.tc.v3.victim(",
+            "    name=victim_name,  # e.g., MyVictim",
+            ")",
+            "",
+            "# create victim in ThreatConnect",
+            "victim.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a victim in ThreatConnect with the provided name.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-create-victim"
+        ],
+        "scope": "python"
+    },
+    "Create Victim with Attribute": {
+        "body": [
+            "# NOTE:",
+            "#     To view the more information about the available attributes for a",
+            "#     victim, please view the create victim snippet.",
+            "victim = self.tcex.api.tc.v3.victim(",
+            "    name=victim_name,  # e.g., MyVictim",
+            ")",
+            "",
+            "# stage attribute",
+            "attribute = self.tcex.api.tc.v3.victim_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., This is a description",
+            ")",
+            "victim.stage_attribute(attribute)",
+            "",
+            "# create victim in ThreatConnect",
+            "victim.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a victim in ThreatConnect with the provided name, and attribute.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-create-victim-with-attribute"
+        ],
+        "scope": "python"
+    },
+    "Create Victim with Security Label": {
+        "body": [
+            "# NOTE:",
+            "#     To view the more information about the available attributes for given",
+            "#     victim, please view the create victim snippet.",
+            "victim = self.tcex.api.tc.v3.victim(name=victim_name)  # e.g., MyVictim",
+            "",
+            "# stage security label",
+            "security_label = self.tcex.api.tc.v3.security_label(name=label_name)  # e.g., TLP:WHITE",
+            "victim.stage_security_label(security_label)",
+            "",
+            "# create victim in ThreatConnect",
+            "victim.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a victim in ThreatConnect with the provided name and security label.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-create-victim-with-security-label"
+        ],
+        "scope": "python"
+    },
+    "Create Victim with Tag": {
+        "body": [
+            "# NOTE:",
+            "#     To view the more information about the available attributes for a",
+            "#     victim, please view the create victim snippet.",
+            "victim = self.tcex.api.tc.v3.victim(",
+            "    name=victim_name,  # e.g., MyVictim",
+            ")",
+            "",
+            "# stage tag",
+            "tag = self.tcex.api.tc.v3.tag(name=tag_name)",
+            "victim.stage_tag(tag)",
+            "",
+            "# create victim in ThreatConnect",
+            "victim.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a victim in ThreatConnect with the provided name and tag.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-create-victim-with-tag"
+        ],
+        "scope": "python"
+    }
+}

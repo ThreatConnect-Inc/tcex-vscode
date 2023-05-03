@@ -1,0 +1,104 @@
+{
+    "Delete Artifact from a Case": {
+        "body": [
+            "case = self.tcex.v3.case(id=case_id)",
+            "",
+            "for artifact in case.artifacts:",
+            "    if artifact.model.summary == artifact_summary:",
+            "        # IMPORTANT:",
+            "        #     This will delete all case artifacts with the provided",
+            "        #     summary from the case",
+            "        artifact.delete()"
+        ],
+        "description": "This snippet will delete a artifact in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-artifact-from-a-case"
+        ],
+        "scope": "python"
+    },
+    "Delete Case Attribute by Type": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "for attribute in case.attributes:",
+            "    if attribute.model.type == 'Description':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a case in ThreatConnect with the provided case id and attribute type.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-case-attribute-by-type"
+        ],
+        "scope": "python"
+    },
+    "Delete Case Attribute by Value": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "for attribute in case.attributes:",
+            "    if attribute.model.value == 'An example description attribute':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a case in ThreatConnect with the provided case id and attribute value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-case-attribute-by-value"
+        ],
+        "scope": "python"
+    },
+    "Delete Note from a Case": {
+        "body": [
+            "case = self.tcex.v3.case(id=case_id)",
+            "",
+            "for note in case.notes:",
+            "    if note.model.id == note_id:",
+            "        note.delete()"
+        ],
+        "description": "This snippet will delete a note in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-note-from-a-case"
+        ],
+        "scope": "python"
+    },
+    "Delete Task from a Case": {
+        "body": [
+            "case = self.tcex.v3.case(id=case_id)",
+            "",
+            "for task in case.tasks:",
+            "    # IMPORTANT:",
+            "    #     This will delete all case tasks with provided name from the case",
+            "    if task.model.name == task_name:",
+            "        task.delete()"
+        ],
+        "description": "This snippet will delete a task in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-task-from-a-case"
+        ],
+        "scope": "python"
+    },
+    "Remove Tag from Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "for tag in case.tags:",
+            "    if tag.model.name == tag_name:  # e.g. \"Example Tag\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the tag from the case",
+            "        #    the \"delete()\" method will remove the tag from the system",
+            "        tag.remove()"
+        ],
+        "description": "This snippet will remove a tag from a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-remove-tag-from-case"
+        ],
+        "scope": "python"
+    }
+}

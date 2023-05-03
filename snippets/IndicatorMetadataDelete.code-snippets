@@ -1,0 +1,74 @@
+{
+    "Delete Indicator Attribute by Type": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "",
+            "# WARNING: this will delete all attributes of this type",
+            "for attribute in indicator.attributes:",
+            "    if attribute.model.type == 'Description':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on an indicator in ThreatConnect with the provided indicator id and attribute type.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-delete-indicator-attribute-by-type"
+        ],
+        "scope": "python"
+    },
+    "Delete Indicator Attribute by Value": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "",
+            "# WARNING: this will delete all attributes with this value",
+            "for attribute in indicator.attributes:",
+            "    if attribute.model.value == 'An example description attribute':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on an indicator in ThreatConnect with the provided indicator id and attribute value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-delete-indicator-attribute-by-value"
+        ],
+        "scope": "python"
+    },
+    "Remove Security Label from Indicator": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "",
+            "for security_label in indicator.security_labels:",
+            "    if security_label.model.name == label_name:  # e.g. \"TLP:WHITE\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the security label from the indicator",
+            "        #    the \"delete()\" method will remove the security label from the system",
+            "        security_label.remove()"
+        ],
+        "description": "This snippet will remove a security label from an indicator in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-remove-security-label-from-indicator"
+        ],
+        "scope": "python"
+    },
+    "Remove Tag from Indicator": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "",
+            "for tag in indicator.tags:",
+            "    if tag.model.name == tag_name:  # e.g. \"Example Tag\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the tag from the indicator",
+            "        #    the \"delete()\" method will remove the tag from the system",
+            "        tag.remove()"
+        ],
+        "description": "This snippet will remove a tag from an indicator in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-remove-tag-from-indicator"
+        ],
+        "scope": "python"
+    }
+}

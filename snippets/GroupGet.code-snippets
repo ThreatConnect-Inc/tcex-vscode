@@ -1,0 +1,127 @@
+{
+    "Get Group by ID": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "# to pull addition fields use the params argument",
+            "# (e.g., params={'fields': ['attributes']})",
+            "group.get()"
+        ],
+        "description": "This snippet will get a group from ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-get-group-by-id"
+        ],
+        "scope": "python"
+    },
+    "Get Group by name": {
+        "body": [
+            "groups = self.tcex.api.tc.v3.groups(params={'owner': owner_name})",
+            "",
+            "# IMPORTANT: Name is just one of many fields that can be used to filter groups.",
+            "groups.filter.summary(TqlOperator.EQ, group_name)",
+            "",
+            "# WARNING:",
+            "#     group names are NOT guaranteed to be unique, this could return multiple groups",
+            "for group in groups:",
+            "    print(group.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will get groups from ThreatConnect using the provide name and owner.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-get-group-by-name"
+        ],
+        "scope": "python"
+    },
+    "Get Group by TQL": {
+        "body": [
+            "groups = self.tcex.api.tc.v3.groups()",
+            "groups.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{group_name}\"'",
+            "",
+            "for group in groups:",
+            "    print(group.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will retrieve one or more group in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-get-group-by-tql"
+        ],
+        "scope": "python"
+    },
+    "Filter Group": {
+        "body": [
+            "groups = self.tcex.api.tc.v3.groups()",
+            "",
+            "groups.filter.associated_indicator_integer(TQLOperator.EQ, associated_indicator_integer)",
+            "groups.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "groups.filter.child_group_integer(TQLOperator.EQ, child_group_integer)",
+            "groups.filter.created_by_user(TQLOperator.EQ, created_by_user)",
+            "groups.filter.date_added_date(TQLOperator.EQ, date_added_date)",
+            "groups.filter.document_date_added_date(TQLOperator.EQ, document_date_added_date)",
+            "groups.filter.document_filename_string(TQLOperator.EQ, document_filename_string)",
+            "groups.filter.document_filesize_long(TQLOperator.EQ, document_filesize_long)",
+            "groups.filter.document_status_string(TQLOperator.EQ, document_status_string)",
+            "groups.filter.document_type_enum(TQLOperator.EQ, document_type_enum)",
+            "groups.filter.downvote_count_integer(TQLOperator.EQ, downvote_count_integer)",
+            "groups.filter.email_date_date(TQLOperator.EQ, email_date_date)",
+            "groups.filter.email_from_string(TQLOperator.EQ, email_from_string)",
+            "groups.filter.email_score_integer(TQLOperator.EQ, email_score_integer)",
+            "groups.filter.email_score_includes_body_boolean(TQLOperator.EQ, email_score_includes_body_boolean)",
+            "groups.filter.email_subject_string(TQLOperator.EQ, email_subject_string)",
+            "groups.filter.event_date_date(TQLOperator.EQ, event_date_date)",
+            "groups.filter.generated_report_boolean(TQLOperator.EQ, generated_report_boolean)",
+            "groups.filter.has_artifact_integer(TQLOperator.EQ, has_artifact_integer)",
+            "groups.filter.has_attribute_integer(TQLOperator.EQ, has_attribute_integer)",
+            "groups.filter.has_case_integer(TQLOperator.EQ, has_case_integer)",
+            "groups.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "groups.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "groups.filter.has_intel_query_integer(TQLOperator.EQ, has_intel_query_integer)",
+            "groups.filter.has_security_label_integer(TQLOperator.EQ, has_security_label_integer)",
+            "groups.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "groups.filter.has_victim_integer(TQLOperator.EQ, has_victim_integer)",
+            "groups.filter.has_victim_asset_integer(TQLOperator.EQ, has_victim_asset_integer)",
+            "groups.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "groups.filter.is_group_boolean(TQLOperator.EQ, is_group_boolean)",
+            "groups.filter.last_modified_date(TQLOperator.EQ, last_modified_date)",
+            "groups.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "groups.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "groups.filter.parent_group_integer(TQLOperator.EQ, parent_group_integer)",
+            "groups.filter.security_label_string(TQLOperator.EQ, security_label_string)",
+            "groups.filter.signature_date_added_date(TQLOperator.EQ, signature_date_added_date)",
+            "groups.filter.signature_filename_string(TQLOperator.EQ, signature_filename_string)",
+            "groups.filter.signature_type_string(TQLOperator.EQ, signature_type_string)",
+            "groups.filter.status_string(TQLOperator.EQ, status_string)",
+            "groups.filter.summary_string(TQLOperator.EQ, summary_string)",
+            "groups.filter.tag_stringlower(TQLOperator.EQ, tag_stringlower)",
+            "groups.filter.tag_owner_integer(TQLOperator.EQ, tag_owner_integer)",
+            "groups.filter.tag_owner_name_string(TQLOperator.EQ, tag_owner_name_string)",
+            "groups.filter.task_assignee_user(TQLOperator.EQ, task_assignee_user)",
+            "groups.filter.task_assignee_pseudo_string(TQLOperator.EQ, task_assignee_pseudo_string)",
+            "groups.filter.task_date_added_date(TQLOperator.EQ, task_date_added_date)",
+            "groups.filter.task_due_date_date(TQLOperator.EQ, task_due_date_date)",
+            "groups.filter.task_escalated_boolean(TQLOperator.EQ, task_escalated_boolean)",
+            "groups.filter.task_escalation_date_date(TQLOperator.EQ, task_escalation_date_date)",
+            "groups.filter.task_last_modified_date(TQLOperator.EQ, task_last_modified_date)",
+            "groups.filter.task_overdue_boolean(TQLOperator.EQ, task_overdue_boolean)",
+            "groups.filter.task_reminded_boolean(TQLOperator.EQ, task_reminded_boolean)",
+            "groups.filter.task_reminder_date_date(TQLOperator.EQ, task_reminder_date_date)",
+            "groups.filter.task_status_string(TQLOperator.EQ, task_status_string)",
+            "groups.filter.type_integer(TQLOperator.EQ, type_integer)",
+            "groups.filter.type_name_string(TQLOperator.EQ, type_name_string)",
+            "groups.filter.upvote_count_integer(TQLOperator.EQ, upvote_count_integer)",
+            "groups.filter.victim_asset_string(TQLOperator.EQ, victim_asset_string)",
+            "",
+            "for group in groups:",
+            "    print(group.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect group",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-filter-group"
+        ],
+        "scope": "python"
+    }
+}

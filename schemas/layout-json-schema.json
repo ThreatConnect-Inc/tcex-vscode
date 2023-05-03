@@ -1,0 +1,93 @@
+{
+ "title": "LayoutJsonModel",
+ "description": "Layout JSON Model",
+ "type": "object",
+ "properties": {
+  "inputs": {
+   "title": "Inputs",
+   "type": "array",
+   "items": {
+    "$ref": "#/definitions/InputsModel"
+   }
+  },
+  "outputs": {
+   "title": "Outputs",
+   "description": "Layout output variable definitions.",
+   "default": [],
+   "type": "array",
+   "items": {
+    "$ref": "#/definitions/OutputsModel"
+   }
+  }
+ },
+ "required": [
+  "inputs"
+ ],
+ "definitions": {
+  "ParametersModel": {
+   "title": "ParametersModel",
+   "description": "Model for layout_json.inputs.{}",
+   "type": "object",
+   "properties": {
+    "display": {
+     "title": "Display",
+     "type": "string"
+    },
+    "name": {
+     "title": "Name",
+     "type": "string"
+    }
+   },
+   "required": [
+    "name"
+   ]
+  },
+  "InputsModel": {
+   "title": "InputsModel",
+   "description": "Model for layout_json.inputs",
+   "type": "object",
+   "properties": {
+    "parameters": {
+     "title": "Parameters",
+     "type": "array",
+     "items": {
+      "$ref": "#/definitions/ParametersModel"
+     }
+    },
+    "sequence": {
+     "title": "Sequence",
+     "type": "integer"
+    },
+    "title": {
+     "title": "Title",
+     "minLength": 3,
+     "maxLength": 100,
+     "type": "string"
+    }
+   },
+   "required": [
+    "parameters",
+    "sequence",
+    "title"
+   ]
+  },
+  "OutputsModel": {
+   "title": "OutputsModel",
+   "description": "Model for layout_json.outputs",
+   "type": "object",
+   "properties": {
+    "display": {
+     "title": "Display",
+     "type": "string"
+    },
+    "name": {
+     "title": "Name",
+     "type": "string"
+    }
+   },
+   "required": [
+    "name"
+   ]
+  }
+ }
+}

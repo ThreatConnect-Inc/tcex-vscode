@@ -1,0 +1,147 @@
+{
+    "Create Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case"
+        ],
+        "scope": "python"
+    },
+    "Create Case with Artifact": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# stage artifact",
+            "artifact = self.tcex.api.tc.v3.artifact(",
+            "    type=artifact_type,  # e.g., ASN",
+            "    summary=artifact_summary,  # e.g., ASN12345",
+            ")",
+            "case.stage_artifact(artifact)",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case and a artifact in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case-with-artifact"
+        ],
+        "scope": "python"
+    },
+    "Create Case with Attribute": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# stage attribute",
+            "attribute = self.tcex.api.tc.v3.case_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., This is a description",
+            ")",
+            "case.stage_attribute(attribute)",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case and an attribute in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case-with-attribute"
+        ],
+        "scope": "python"
+    },
+    "Create Case with Note": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# stage artifact",
+            "note = self.tcex.api.tc.v3.note(",
+            "    text=note_text,  # e.g., An example note.",
+            ")",
+            "case.stage_note(note)",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case and a note in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case-with-note"
+        ],
+        "scope": "python"
+    },
+    "Create Case with Tag": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# stage tag",
+            "tag = self.tcex.api.tc.v3.tag(name=tag_name)  # e.g., CVE-123",
+            "case.stage_tag(tag)",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case and a tag in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case-with-tag"
+        ],
+        "scope": "python"
+    },
+    "Create Case with Task": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(",
+            "    name=case_name,  # e.g., CaseName",
+            "    severity=case_severity,  # e.g., Low",
+            "    status=case_status,  # e.g., Open",
+            ")",
+            "",
+            "# stage artifact",
+            "task = self.tcex.api.tc.v3.task(",
+            "    name=task_name,  # e.g., MyTask",
+            "    summary=task_description,  # e.g., A task to ...",
+            ")",
+            "case.stage_task(task)",
+            "",
+            "# create case in ThreatConnect",
+            "case.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create a case and a task in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-create-case-with-task"
+        ],
+        "scope": "python"
+    }
+}

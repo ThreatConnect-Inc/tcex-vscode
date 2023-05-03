@@ -1,0 +1,225 @@
+{
+    "Get Case Artifacts": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.get(params={'fields': ['artifacts']})",
+            "",
+            "# get first 1k case notes",
+            "for artifact in case.model.artifacts.data or []:",
+            "    print(artifact.summary)"
+        ],
+        "description": "This snippet will get a Case from ThreatConnect with nested artifacts. However, the case will only have the first 1k artifacts, which is typically more artifacts than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-artifacts"
+        ],
+        "scope": "python"
+    },
+    "Get Case Artifacts Iteration": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "# iterate over all case artifacts",
+            "for artifact in case.artifacts:",
+            "    print(artifact.model.summary)"
+        ],
+        "description": "This snippet will will iterate over all case artifacts.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-artifacts-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Case Attributes": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.get(params={'fields': ['attributes']})",
+            "",
+            "# get first 1k case attributes",
+            "for attribute in case.model.attributes.data or []:",
+            "    print(attribute.type, attribute.value)"
+        ],
+        "description": "This snippet will get a Case from ThreatConnect with nested attribute. However, the case will only have the first 1k attributes, which is typically more attributes than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-attributes"
+        ],
+        "scope": "python"
+    },
+    "Get Case Attributes Iteration": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "# iterate over all case attributes",
+            "for attribute in case.attributes:",
+            "    print(attribute.model.type, attribute.model.value)"
+        ],
+        "description": "This snippet will will iterate over all case attributes.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-attributes-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Case Notes": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.get(params={'fields': ['notes']})",
+            "",
+            "# get first 1k case notes",
+            "for note in case.model.notes.data or []:",
+            "    print(note.text)"
+        ],
+        "description": "This snippet will get a Case from ThreatConnect with nested notes. However, the case will only have the first 1k notes, which is typically more notes than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-notes"
+        ],
+        "scope": "python"
+    },
+    "Get Case Notes Iteration": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "# iterate over all case notes",
+            "for note in case.notes:",
+            "    print(note.model.text)"
+        ],
+        "description": "This snippet will will iterate over all case notes.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-notes-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Case Tags": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.get(params={'fields': ['tags']})",
+            "",
+            "# get first 1k case tags",
+            "for tag in case.model.tags.data or []:",
+            "    print(tag.name)"
+        ],
+        "description": "This snippet will get a Case from ThreatConnect with nested tags. However, the case will only have the first 1k tags, which is typically more tags than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-tags"
+        ],
+        "scope": "python"
+    },
+    "Get Case Tags Iteration": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "# iterate over all case tags",
+            "for tag in case.tags:",
+            "    print(tag.model.name)"
+        ],
+        "description": "This snippet will will iterate over all case tags.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-tags-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Case Tasks": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.get(params={'fields': ['tasks']})",
+            "",
+            "# get first 1k case tasks",
+            "for task in case.model.tasks.data or []:",
+            "    print(task.name)"
+        ],
+        "description": "This snippet will get a Case from ThreatConnect with nested tasks. However, the case will only have the first 1k tasks, which is typically more tasks than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-tasks"
+        ],
+        "scope": "python"
+    },
+    "Get Case Tasks Iteration": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "# iterate over all case tasks",
+            "for task in case.tasks:",
+            "    print(task.model.name)"
+        ],
+        "description": "This snippet will will iterate over all case tasks.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-tasks-iteration"
+        ],
+        "scope": "python"
+    },
+    "Filter Case": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "",
+            "cases.filter.assigned_to_user_or_group_enum(TQLOperator.EQ, assigned_to_user_or_group_enum)",
+            "cases.filter.assignee_name_assignee(TQLOperator.EQ, assignee_name_assignee)",
+            "cases.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "cases.filter.cal_score_integer(TQLOperator.EQ, cal_score_integer)",
+            "cases.filter.case_close_date_datetime(TQLOperator.EQ, case_close_date_datetime)",
+            "cases.filter.case_close_time_datetime(TQLOperator.EQ, case_close_time_datetime)",
+            "cases.filter.case_close_user_user(TQLOperator.EQ, case_close_user_user)",
+            "cases.filter.case_detection_time_datetime(TQLOperator.EQ, case_detection_time_datetime)",
+            "cases.filter.case_detection_user_user(TQLOperator.EQ, case_detection_user_user)",
+            "cases.filter.case_occurrence_time_datetime(TQLOperator.EQ, case_occurrence_time_datetime)",
+            "cases.filter.case_occurrence_user_user(TQLOperator.EQ, case_occurrence_user_user)",
+            "cases.filter.case_open_date_datetime(TQLOperator.EQ, case_open_date_datetime)",
+            "cases.filter.case_open_time_datetime(TQLOperator.EQ, case_open_time_datetime)",
+            "cases.filter.case_open_user_user(TQLOperator.EQ, case_open_user_user)",
+            "cases.filter.created_by_user(TQLOperator.EQ, created_by_user)",
+            "cases.filter.created_by_id_integer(TQLOperator.EQ, created_by_id_integer)",
+            "cases.filter.date_added_datetime(TQLOperator.EQ, date_added_datetime)",
+            "cases.filter.description_string(TQLOperator.EQ, description_string)",
+            "cases.filter.has_artifact_integer(TQLOperator.EQ, has_artifact_integer)",
+            "cases.filter.has_case_integer(TQLOperator.EQ, has_case_integer)",
+            "cases.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "cases.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "cases.filter.has_note_integer(TQLOperator.EQ, has_note_integer)",
+            "cases.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "cases.filter.has_task_integer(TQLOperator.EQ, has_task_integer)",
+            "cases.filter.has_workflow_template_integer(TQLOperator.EQ, has_workflow_template_integer)",
+            "cases.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "cases.filter.id_as_string_string(TQLOperator.EQ, id_as_string_string)",
+            "cases.filter.last_updated_datetime(TQLOperator.EQ, last_updated_datetime)",
+            "cases.filter.missing_artifact_count_integer(TQLOperator.EQ, missing_artifact_count_integer)",
+            "cases.filter.name_string(TQLOperator.EQ, name_string)",
+            "cases.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "cases.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "cases.filter.resolution_string(TQLOperator.EQ, resolution_string)",
+            "cases.filter.severity_enumtointeger(TQLOperator.EQ, severity_enumtointeger)",
+            "cases.filter.status_enumtointeger(TQLOperator.EQ, status_enumtointeger)",
+            "cases.filter.tag_string(TQLOperator.EQ, tag_string)",
+            "cases.filter.target_id_integer(TQLOperator.EQ, target_id_integer)",
+            "cases.filter.target_type_enum(TQLOperator.EQ, target_type_enum)",
+            "cases.filter.threat_assess_score_integer(TQLOperator.EQ, threat_assess_score_integer)",
+            "cases.filter.type_name_string(TQLOperator.EQ, type_name_string)",
+            "cases.filter.xid_string(TQLOperator.EQ, xid_string)",
+            "",
+            "for case in cases:",
+            "    print(case.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect case",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-filter-case"
+        ],
+        "scope": "python"
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "Get Victim Assets Iteration": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# iterate over all victim tags",
+            "for victim_asset in victim.victim_assets:",
+            "    print(victim_asset.model.type)"
+        ],
+        "description": "This snippet will will iterate over all victim assets.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-assets-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Attributes": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "victim.get(params={'fields': ['attributes']})",
+            "",
+            "# get first 1k victim attributes",
+            "for attribute in victim.model.attributes.data or []:",
+            "    print(attribute.type, attribute.value)"
+        ],
+        "description": "This snippet will get a Victim from ThreatConnect with nested attribute. However, the victim will only have the first 1k attributes, which is typically more attributes than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-attributes"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Attributes Iteration": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# iterate over all victim attributes",
+            "for attribute in victim.attributes:",
+            "    print(attribute.model.type, attribute.model.value)"
+        ],
+        "description": "This snippet will will iterate over all victim attributes.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-attributes-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Security Labels": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "victim.get(params={'fields': ['securityLabels']})",
+            "",
+            "# get first 1k victim security labels",
+            "for security_label in victim.model.security_labels.data or []:",
+            "    print(security_label.name)"
+        ],
+        "description": "This snippet will get a Victim from ThreatConnect with nested security labels. However, the victim will only have the first 1k security labels, which is typically more security labels than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-security-labels"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Security Label Iteration": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# iterate over all victim security labels",
+            "for security_label in victim.security_labels:",
+            "    print(security_label.model.name)"
+        ],
+        "description": "This snippet will will iterate over all victim security labels.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-security-label-iteration"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Tags": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "victim.get(params={'fields': ['tags']})",
+            "",
+            "# get first 1k victim tags",
+            "for tag in victim.model.tags.data or []:",
+            "    print(tag.name)"
+        ],
+        "description": "This snippet will get a Victim from ThreatConnect with nested tags. However, the victim will only have the first 1k tags, which is typically more tags than any TI object should have.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-tags"
+        ],
+        "scope": "python"
+    },
+    "Get Victim Tags Iteration": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# iterate over all victim tags",
+            "for tag in victim.tags:",
+            "    print(tag.model.name)"
+        ],
+        "description": "This snippet will will iterate over all victim tags.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-get-victim-tags-iteration"
+        ],
+        "scope": "python"
+    },
+    "Filter Victim": {
+        "body": [
+            "victims = self.tcex.api.tc.v3.victims()",
+            "",
+            "victims.filter.asset_name_string(TQLOperator.EQ, asset_name_string)",
+            "victims.filter.asset_type_integer(TQLOperator.EQ, asset_type_integer)",
+            "victims.filter.asset_typename_string(TQLOperator.EQ, asset_typename_string)",
+            "victims.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "victims.filter.description_string(TQLOperator.EQ, description_string)",
+            "victims.filter.has_attribute_integer(TQLOperator.EQ, has_attribute_integer)",
+            "victims.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "victims.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "victims.filter.has_security_label_integer(TQLOperator.EQ, has_security_label_integer)",
+            "victims.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "victims.filter.has_victim_integer(TQLOperator.EQ, has_victim_integer)",
+            "victims.filter.has_victim_asset_integer(TQLOperator.EQ, has_victim_asset_integer)",
+            "victims.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "victims.filter.name_string(TQLOperator.EQ, name_string)",
+            "victims.filter.nationality_string(TQLOperator.EQ, nationality_string)",
+            "victims.filter.organization_string(TQLOperator.EQ, organization_string)",
+            "victims.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "victims.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "victims.filter.security_label_string(TQLOperator.EQ, security_label_string)",
+            "victims.filter.sub_org_string(TQLOperator.EQ, sub_org_string)",
+            "victims.filter.summary_string(TQLOperator.EQ, summary_string)",
+            "victims.filter.tag_string(TQLOperator.EQ, tag_string)",
+            "victims.filter.tag_owner_integer(TQLOperator.EQ, tag_owner_integer)",
+            "victims.filter.tag_owner_name_string(TQLOperator.EQ, tag_owner_name_string)",
+            "victims.filter.work_location_string(TQLOperator.EQ, work_location_string)",
+            "",
+            "for victim in victims:",
+            "    print(victim.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect victim",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-filter-victim"
+        ],
+        "scope": "python"
+    }
+}

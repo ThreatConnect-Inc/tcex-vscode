@@ -1,0 +1,92 @@
+{
+    "Add a Group to Artifact Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "associated_artifact = self.tcex.api.tc.v3.artifact(id=associated_artifact_id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "group.stage_associated_artifact(associated_artifact)",
+            "group.update()"
+        ],
+        "description": "This snippet will add a group to artifact association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-a-group-to-artifact-association"
+        ],
+        "scope": "python"
+    },
+    "Add a Group to Case Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "associated_case = self.tcex.api.tc.v3.case(id=associated_case_id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "group.stage_associated_case(associated_case)",
+            "group.update()"
+        ],
+        "description": "This snippet will add a group to case association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-a-group-to-case-association"
+        ],
+        "scope": "python"
+    },
+    "Add a Group to Group Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "associated_group = self.tcex.api.tc.v3.group(id=associated_group_id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "group.stage_associated_group(associated_group)",
+            "group.update()"
+        ],
+        "description": "This snippet will add a group to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-a-group-to-group-association"
+        ],
+        "scope": "python"
+    },
+    "Add a Group to Indicator Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "associated_indicator = self.tcex.api.tc.v3.indicator(id=associated_indicator_id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "group.stage_associated_indicator(associated_indicator)",
+            "group.update()"
+        ],
+        "description": "This snippet will add a group to indicator association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-a-group-to-indicator-association"
+        ],
+        "scope": "python"
+    },
+    "Add a Group to Victim Association": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "# The Associated Victim Asset ID can be obtained from the victim.assets.data object",
+            "# View the get victim asset snippet for more information",
+            "associated_victim_asset = self.tcex.api.tc.v3.victim_asset(",
+            "    id=associated_victim_asset_id",
+            ")",
+            "associated_case = self.tcex.api.tc.v3.case(id=associated_victim_asset.model.id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "group.stage_associated_victim_asset(associated_case)",
+            "group.update()"
+        ],
+        "description": "This snippet will add a group to victim asset association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-a-group-to-victim-association"
+        ],
+        "scope": "python"
+    }
+}

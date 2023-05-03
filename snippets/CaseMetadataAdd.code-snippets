@@ -1,0 +1,102 @@
+{
+    "Add Artifact to a Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "artifact = self.tcex.v3.artifact(",
+            "    summary=artifact_summary,  # e.g., ASN12345",
+            "    type=artifact_type,  # e.g., ASN",
+            ")",
+            "# Stage the artifact to be added upon case update",
+            "case.stage_artifact(artifact)",
+            "",
+            "case.update()"
+        ],
+        "description": "This snippet will add a artifact to a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-artifact-to-a-case"
+        ],
+        "scope": "python"
+    },
+    "Add Attribute to a Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "attribute = self.tcex.api.tc.v3.case_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., A Case ...",
+            ")",
+            "",
+            "# Stage the attribute to be added upon case update",
+            "case.stage_attribute(attribute)",
+            "",
+            "# create case in ThreatConnect",
+            "case.update()"
+        ],
+        "description": "This snippet will add an attribute to a case in ThreatConnect using the provided attribute type and value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-attribute-to-a-case"
+        ],
+        "scope": "python"
+    },
+    "Add Note to a Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "note = self.tcex.v3.note(",
+            "    text=note_text,  # e.g., An example note.",
+            ")",
+            "# Stage the note to be added upon case update",
+            "case.stage_note(note)",
+            "",
+            "case.update()"
+        ],
+        "description": "This snippet will add a note to a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-note-to-a-case"
+        ],
+        "scope": "python"
+    },
+    "Add Tag to a Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "tag = self.tcex.api.tc.v3.tag(name=tag_name)  # e.g. \"Example Tag\"",
+            "",
+            "# Stage the tag to be added upon case update",
+            "case.stage_tag(tag)",
+            "",
+            "case.update()"
+        ],
+        "description": "This snippet will add a tag to a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-tag-to-a-case"
+        ],
+        "scope": "python"
+    },
+    "Add Task to a Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "task = self.tcex.v3.task(",
+            "    name=task_name,  # e.g., MyTask,",
+            "    description=task_description,  # e.g., A task to ...",
+            ")",
+            "# Stage the task to be added upon case update",
+            "case.stage_task(task)",
+            "",
+            "case.update()"
+        ],
+        "description": "This snippet will add a task to a case in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-task-to-a-case"
+        ],
+        "scope": "python"
+    }
+}

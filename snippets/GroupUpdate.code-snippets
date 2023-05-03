@@ -1,0 +1,22 @@
+{
+    "Update Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "# update the group name",
+            "# Note:",
+            "#   name is just one of the many properties that can be updated",
+            "group.model.name = group_name",
+            "",
+            "# update the group in ThreatConnect",
+            "group.update()"
+        ],
+        "description": "This snippet will update a group attribute in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-update-group"
+        ],
+        "scope": "python"
+    }
+}

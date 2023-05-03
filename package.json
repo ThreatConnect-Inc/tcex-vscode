@@ -1,0 +1,213 @@
+{
+    "name": "tcex-vscode",
+    "displayName": "ThreatConnect App Builder",
+    "description": "",
+    "icon": "images/tc-logo.png",
+    "version": "0.0.1",
+    "publisher": "ThreatConnect, Inc.",
+    "engines": {
+        "vscode": "^1.71.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "license": "Apache-2.0",
+    "main": "./dist/extension.js",
+    "contributes": {
+        "jsonValidation": [
+            {
+                "fileMatch": [
+                    "install.json"
+                ],
+                "url": "./schemas/install-json-schema.json"
+            },
+            {
+                "fileMatch": [
+                    "layout.json"
+                ],
+                "url": "./schemas/layout-json-schema.json"
+            },
+            {
+                "fileMatch": [
+                    "tcex.json"
+                ],
+                "url": "./schemas/tcex-json-schema.json"
+            }
+        ],
+        "snippets": [
+            {
+                "path": "./snippets/VictimMetadataGet.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupUpload.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseMetadataAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimUpdate.code-snippets"
+            },
+            {
+                "path": "./snippets/DatastoreAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseAssociationRemove.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimGet.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorMetadataGet.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseAssociationAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/ArtifactUpdate.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorCreate.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseGet.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorAssociationAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseUpdate.code-snippets"
+            },
+            {
+                "path": "./snippets/MetricAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupDownload.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupAssociationAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorAssociationRemove.code-snippets"
+            },
+            {
+                "path": "./snippets/ArtifactAssociationAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/DatastoreDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimAssociationRemove.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimAssociationAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupMetadataGet.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupCreate.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorGet.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimMetadataDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/DatastoreGet.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupUpdate.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseMetadataGet.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimMetadataAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/BatchCreate.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseCreate.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupMetadataDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorMetadataAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseMetadataDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupAssociationRemove.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorMetadataDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/IndicatorUpdate.code-snippets"
+            },
+            {
+                "path": "./snippets/NotificationSend.code-snippets"
+            },
+            {
+                "path": "./snippets/CaseDelete.code-snippets"
+            },
+            {
+                "path": "./snippets/VictimCreate.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupGet.code-snippets"
+            },
+            {
+                "path": "./snippets/GroupMetadataAdd.code-snippets"
+            },
+            {
+                "path": "./snippets/DatastoreUpdate.code-snippets"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.71.0",
+        "@typescript-eslint/eslint-plugin": "^5.31.0",
+        "@typescript-eslint/parser": "^5.31.0",
+        "@vscode/test-electron": "^2.1.5",
+        "eslint": "^8.20.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "ts-loader": "^9.3.1",
+        "typescript": "^4.7.4",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    },
+    "dependencies": {
+        "axios": "^0.27.2"
+    },
+    "repository": "https://github.com/ThreatConnect-Inc/tcex-vscode"
+}

@@ -1,0 +1,99 @@
+{
+    "Create Indicator": {
+        "body": [
+            "# IMPORTANT:",
+            "#    Indicator type field definitions:",
+            "#",
+            "#    Address - \"ip\" is required",
+            "#    EmailAddress - \"address\" is required",
+            "#    File - a combination of one or more of \"md5\", \"sha1\", or \"sha256\" is required",
+            "#    Host - \"host_name\" is required",
+            "#    URL - \"text\" is required",
+            "#    Custom Indicators -",
+            "#      a combination of one or more of \"value1\", \"value2\", \"value3\" is required",
+            "indicator = self.tcex.api.tc.v3.indicator(",
+            "    ip=indicator_summary,  # e.g., 111.111.111.111",
+            "    type=indicator_type,  # e.g., Address",
+            ")",
+            "",
+            "# create indicator in ThreatConnect",
+            "indicator.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create an indicator in ThreatConnect with the provided summary and type.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-create-indicator"
+        ],
+        "scope": "python"
+    },
+    "Create Indicator with Attribute": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(",
+            "    ip=indicator_summary,  # e.g., 111.111.111.111",
+            "    type=indicator_type,  # e.g., Address",
+            ")",
+            "",
+            "# stage attribute",
+            "attribute = self.tcex.api.tc.v3.indicator_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., This indicator ...",
+            ")",
+            "indicator.stage_attribute(attribute)",
+            "",
+            "# create indicator in ThreatConnect",
+            "indicator.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create an indicator in ThreatConnect with the provided summary, type, and attribute.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-create-indicator-with-attribute"
+        ],
+        "scope": "python"
+    },
+    "Create Indicator with Security Label": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(",
+            "    ip=indicator_summary,  # e.g., 111.111.111.111",
+            "    type=indicator_type,  # e.g., Address",
+            ")",
+            "",
+            "# stage security label",
+            "security_label = self.tcex.api.tc.v3.security_label(ip=label_name)  # e.g., TLP:WHITE",
+            "indicator.stage_security_label(security_label)",
+            "",
+            "# create indicator in ThreatConnect",
+            "indicator.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create an indicator in ThreatConnect with the provided summary, type, and security label.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-create-indicator-with-security-label"
+        ],
+        "scope": "python"
+    },
+    "Create Indicator with Tag": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(",
+            "    ip=indicator_summary,  # e.g., 111.111.111.111",
+            "    type=indicator_type,  # e.g., Address",
+            ")",
+            "",
+            "# stage tag",
+            "tag = self.tcex.api.tc.v3.tag(ip=tag_name)  # e.g., CVE-123",
+            "indicator.stage_tag(tag)",
+            "",
+            "# create indicator in ThreatConnect",
+            "indicator.create(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will create an indicator in ThreatConnect with the provided summary, type, and tag.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-create-indicator-with-tag"
+        ],
+        "scope": "python"
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "Get Case by ID": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "# to pull addition fields use the params argument",
+            "# (e.g., params={'fields': ['attributes']})",
+            "case.get()"
+        ],
+        "description": "This snippet will get a case from ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-by-id"
+        ],
+        "scope": "python"
+    },
+    "Get Case by name": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "",
+            "cases.filter.name(TqlOperator.EQ, case_name)",
+            "cases.filter.owner_name(TqlOperator.EQ, owner_name)",
+            "",
+            "for case in cases:",
+            "    print(case.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will get cases from ThreatConnect using the provide name and owner.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-by-name"
+        ],
+        "scope": "python"
+    },
+    "Get Case by TQL": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "cases.filter.tql.raw_tql = raw_tql  # e.g., f'name EQ \"{case_name}\"'",
+            "",
+            "for case in cases:",
+            "    print(case.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will retrieve one or more case in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-get-case-by-tql"
+        ],
+        "scope": "python"
+    },
+    "Filter Case": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "",
+            "cases.filter.assigned_to_user_or_group_enum(TQLOperator.EQ, assigned_to_user_or_group_enum)",
+            "cases.filter.assignee_name_assignee(TQLOperator.EQ, assignee_name_assignee)",
+            "cases.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "cases.filter.cal_score_integer(TQLOperator.EQ, cal_score_integer)",
+            "cases.filter.case_close_date_datetime(TQLOperator.EQ, case_close_date_datetime)",
+            "cases.filter.case_close_time_datetime(TQLOperator.EQ, case_close_time_datetime)",
+            "cases.filter.case_close_user_user(TQLOperator.EQ, case_close_user_user)",
+            "cases.filter.case_detection_time_datetime(TQLOperator.EQ, case_detection_time_datetime)",
+            "cases.filter.case_detection_user_user(TQLOperator.EQ, case_detection_user_user)",
+            "cases.filter.case_occurrence_time_datetime(TQLOperator.EQ, case_occurrence_time_datetime)",
+            "cases.filter.case_occurrence_user_user(TQLOperator.EQ, case_occurrence_user_user)",
+            "cases.filter.case_open_date_datetime(TQLOperator.EQ, case_open_date_datetime)",
+            "cases.filter.case_open_time_datetime(TQLOperator.EQ, case_open_time_datetime)",
+            "cases.filter.case_open_user_user(TQLOperator.EQ, case_open_user_user)",
+            "cases.filter.created_by_user(TQLOperator.EQ, created_by_user)",
+            "cases.filter.created_by_id_integer(TQLOperator.EQ, created_by_id_integer)",
+            "cases.filter.date_added_datetime(TQLOperator.EQ, date_added_datetime)",
+            "cases.filter.description_string(TQLOperator.EQ, description_string)",
+            "cases.filter.has_artifact_integer(TQLOperator.EQ, has_artifact_integer)",
+            "cases.filter.has_case_integer(TQLOperator.EQ, has_case_integer)",
+            "cases.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "cases.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "cases.filter.has_note_integer(TQLOperator.EQ, has_note_integer)",
+            "cases.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "cases.filter.has_task_integer(TQLOperator.EQ, has_task_integer)",
+            "cases.filter.has_workflow_template_integer(TQLOperator.EQ, has_workflow_template_integer)",
+            "cases.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "cases.filter.id_as_string_string(TQLOperator.EQ, id_as_string_string)",
+            "cases.filter.last_updated_datetime(TQLOperator.EQ, last_updated_datetime)",
+            "cases.filter.missing_artifact_count_integer(TQLOperator.EQ, missing_artifact_count_integer)",
+            "cases.filter.name_string(TQLOperator.EQ, name_string)",
+            "cases.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "cases.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "cases.filter.resolution_string(TQLOperator.EQ, resolution_string)",
+            "cases.filter.severity_enumtointeger(TQLOperator.EQ, severity_enumtointeger)",
+            "cases.filter.status_enumtointeger(TQLOperator.EQ, status_enumtointeger)",
+            "cases.filter.tag_string(TQLOperator.EQ, tag_string)",
+            "cases.filter.target_id_integer(TQLOperator.EQ, target_id_integer)",
+            "cases.filter.target_type_enum(TQLOperator.EQ, target_type_enum)",
+            "cases.filter.threat_assess_score_integer(TQLOperator.EQ, threat_assess_score_integer)",
+            "cases.filter.type_name_string(TQLOperator.EQ, type_name_string)",
+            "cases.filter.xid_string(TQLOperator.EQ, xid_string)",
+            "",
+            "for case in cases:",
+            "    print(case.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect case",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-filter-case"
+        ],
+        "scope": "python"
+    }
+}

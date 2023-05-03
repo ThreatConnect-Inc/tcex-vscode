@@ -1,0 +1,19 @@
+{
+    "Add a Case to Group Association": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "associated_group = self.tcex.api.tc.v3.group(id=associated_group_id)",
+            "",
+            "# Stage the association to be added upon case update",
+            "case.stage_associated_group(associated_group)",
+            "case.update()"
+        ],
+        "description": "This snippet will add a case to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-add-a-case-to-group-association"
+        ],
+        "scope": "python"
+    }
+}

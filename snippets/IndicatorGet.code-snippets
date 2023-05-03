@@ -1,0 +1,114 @@
+{
+    "Get Indicator by ID": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "# to pull addition fields use the params argument",
+            "# (e.g., params={'fields': ['attributes']})",
+            "indicator.get()"
+        ],
+        "description": "This snippet will get an indicator from ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-get-indicator-by-id"
+        ],
+        "scope": "python"
+    },
+    "Get Indicator by summary": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(summary=indicator_summary)",
+            "indicator.get(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will get an indicator from ThreatConnect with the provided summary and owner name.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-get-indicator-by-summary"
+        ],
+        "scope": "python"
+    },
+    "Get Indicator by TQL": {
+        "body": [
+            "indicators = self.tcex.api.tc.v3.indicators()",
+            "indicators.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{indicator_summary}\"'",
+            "",
+            "for indicator in indicators:",
+            "    print(indicator.model.dict(exclude_none=True))"
+        ],
+        "description": "This snippet will retrieve one or more indicator in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-get-indicator-by-tql"
+        ],
+        "scope": "python"
+    },
+    "Filter Indicator": {
+        "body": [
+            "indicators = self.tcex.api.tc.v3.indicators()",
+            "",
+            "indicators.filter.active_locked_boolean(TQLOperator.EQ, active_locked_boolean)",
+            "indicators.filter.address_asn_integer(TQLOperator.EQ, address_asn_integer)",
+            "indicators.filter.address_cidr_stringcidr(TQLOperator.EQ, address_cidr_stringcidr)",
+            "indicators.filter.address_city_string(TQLOperator.EQ, address_city_string)",
+            "indicators.filter.address_country_code_string(TQLOperator.EQ, address_country_code_string)",
+            "indicators.filter.address_country_name_string(TQLOperator.EQ, address_country_name_string)",
+            "indicators.filter.address_ip_val_biginteger(TQLOperator.EQ, address_ip_val_biginteger)",
+            "indicators.filter.address_is_ipv6_boolean(TQLOperator.EQ, address_is_ipv6_boolean)",
+            "indicators.filter.address_registering_org_string(TQLOperator.EQ, address_registering_org_string)",
+            "indicators.filter.address_state_string(TQLOperator.EQ, address_state_string)",
+            "indicators.filter.address_timezone_string(TQLOperator.EQ, address_timezone_string)",
+            "indicators.filter.associated_group_integer(TQLOperator.EQ, associated_group_integer)",
+            "indicators.filter.attribute_undefined(TQLOperator.EQ, attribute_undefined)",
+            "indicators.filter.confidence_integer(TQLOperator.EQ, confidence_integer)",
+            "indicators.filter.date_added_datetime(TQLOperator.EQ, date_added_datetime)",
+            "indicators.filter.description_string(TQLOperator.EQ, description_string)",
+            "indicators.filter.false_positive_count_integer(TQLOperator.EQ, false_positive_count_integer)",
+            "indicators.filter.file_size_biginteger(TQLOperator.EQ, file_size_biginteger)",
+            "indicators.filter.has_artifact_integer(TQLOperator.EQ, has_artifact_integer)",
+            "indicators.filter.has_attribute_integer(TQLOperator.EQ, has_attribute_integer)",
+            "indicators.filter.has_case_integer(TQLOperator.EQ, has_case_integer)",
+            "indicators.filter.has_group_integer(TQLOperator.EQ, has_group_integer)",
+            "indicators.filter.has_indicator_integer(TQLOperator.EQ, has_indicator_integer)",
+            "indicators.filter.has_security_label_integer(TQLOperator.EQ, has_security_label_integer)",
+            "indicators.filter.has_tag_integer(TQLOperator.EQ, has_tag_integer)",
+            "indicators.filter.has_victim_integer(TQLOperator.EQ, has_victim_integer)",
+            "indicators.filter.has_victim_asset_integer(TQLOperator.EQ, has_victim_asset_integer)",
+            "indicators.filter.host_dns_active_boolean(TQLOperator.EQ, host_dns_active_boolean)",
+            "indicators.filter.host_whois_active_boolean(TQLOperator.EQ, host_whois_active_boolean)",
+            "indicators.filter.id_integer(TQLOperator.EQ, id_integer)",
+            "indicators.filter.indicator_active_boolean(TQLOperator.EQ, indicator_active_boolean)",
+            "indicators.filter.last_false_positive_datetime(TQLOperator.EQ, last_false_positive_datetime)",
+            "indicators.filter.last_modified_datetime(TQLOperator.EQ, last_modified_datetime)",
+            "indicators.filter.last_observed_datetime(TQLOperator.EQ, last_observed_datetime)",
+            "indicators.filter.observation_count_integer(TQLOperator.EQ, observation_count_integer)",
+            "indicators.filter.owner_integer(TQLOperator.EQ, owner_integer)",
+            "indicators.filter.owner_name_string(TQLOperator.EQ, owner_name_string)",
+            "indicators.filter.rating_integer(TQLOperator.EQ, rating_integer)",
+            "indicators.filter.security_label_string(TQLOperator.EQ, security_label_string)",
+            "indicators.filter.source_string(TQLOperator.EQ, source_string)",
+            "indicators.filter.summary_string(TQLOperator.EQ, summary_string)",
+            "indicators.filter.tag_stringlower(TQLOperator.EQ, tag_stringlower)",
+            "indicators.filter.tag_owner_integer(TQLOperator.EQ, tag_owner_integer)",
+            "indicators.filter.tag_owner_name_string(TQLOperator.EQ, tag_owner_name_string)",
+            "indicators.filter.threat_assess_score_integer(TQLOperator.EQ, threat_assess_score_integer)",
+            "indicators.filter.type_integer(TQLOperator.EQ, type_integer)",
+            "indicators.filter.type_name_string(TQLOperator.EQ, type_name_string)",
+            "indicators.filter.value1_string(TQLOperator.EQ, value1_string)",
+            "indicators.filter.value2_string(TQLOperator.EQ, value2_string)",
+            "indicators.filter.value3_string(TQLOperator.EQ, value3_string)",
+            "indicators.filter.vt_last_updated_datetime(TQLOperator.EQ, vt_last_updated_datetime)",
+            "indicators.filter.vt_malicious_count_integer(TQLOperator.EQ, vt_malicious_count_integer)",
+            "",
+            "for indicator in indicators:",
+            "    print(indicator.model.dict())"
+        ],
+        "description": "This snippet will show all of the filter options for a ThreatConnect indicator",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-filter-indicator"
+        ],
+        "scope": "python"
+    }
+}

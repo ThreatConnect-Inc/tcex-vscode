@@ -1,0 +1,58 @@
+{
+ "title": "TcexJsonModel",
+ "description": "TcEx JSON Model",
+ "type": "object",
+ "properties": {
+  "package": {
+   "$ref": "#/definitions/PackageModel"
+  },
+  "template_name": {
+   "title": "Template Name",
+   "type": "string"
+  },
+  "template_repo_hash": {
+   "title": "Template Repo Hash",
+   "type": "string"
+  },
+  "template_type": {
+   "title": "Template Type",
+   "type": "string"
+  }
+ },
+ "required": [
+  "package",
+  "template_name",
+  "template_type"
+ ],
+ "definitions": {
+  "PackageModel": {
+   "title": "PackageModel",
+   "description": "Model for tcex_json.package",
+   "type": "object",
+   "properties": {
+    "app_name": {
+     "title": "App Name",
+     "type": "string"
+    },
+    "app_version": {
+     "title": "App Version",
+     "type": "string"
+    },
+    "excludes": {
+     "title": "Excludes",
+     "type": "array",
+     "items": {}
+    },
+    "output_dir": {
+     "title": "Output Dir",
+     "default": "target",
+     "type": "string"
+    }
+   },
+   "required": [
+    "app_name",
+    "excludes"
+   ]
+  }
+ }
+}

@@ -1,0 +1,36 @@
+{
+    "Add a Artifact to Group Association": {
+        "body": [
+            "artifact = self.tcex.api.tc.v3.artifact(id=artifact_id)",
+            "associated_group = self.tcex.api.tc.v3.group(id=associated_group_id)",
+            "",
+            "# Stage the association to be added upon group update",
+            "artifact.stage_associated_group(associated_group)",
+            "artifact.update()"
+        ],
+        "description": "This snippet will add a artifact to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-artifact-add-a-artifact-to-group-association"
+        ],
+        "scope": "python"
+    },
+    "Add a Artifact to Indicator Association": {
+        "body": [
+            "artifact = self.tcex.api.tc.v3.artifact(id=artifact_id)",
+            "associated_indicator = self.tcex.api.tc.v3.indicator(id=associated_indicator_id)",
+            "",
+            "# Stage the association to be added upon artifact update",
+            "artifact.stage_associated_indicator(associated_indicator)",
+            "artifact.update()"
+        ],
+        "description": "This snippet will add a artifact to indicator association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-artifact-add-a-artifact-to-indicator-association"
+        ],
+        "scope": "python"
+    }
+}

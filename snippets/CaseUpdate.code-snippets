@@ -1,0 +1,38 @@
+{
+    "Update Case": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "case.model.name = case_name",
+            "",
+            "# update the case in ThreatConnect",
+            "case.update()"
+        ],
+        "description": "This snippet will update a case attribute in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-update-case"
+        ],
+        "scope": "python"
+    },
+    "Update Case with Note": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "",
+            "note = self.tcex.api.tc.v3.note(text=note_text)",
+            "",
+            "case.stage_note(note)",
+            "",
+            "# update the case in ThreatConnect",
+            "case.update()"
+        ],
+        "description": "This snippet will update a case adding a note in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-update-case-with-note"
+        ],
+        "scope": "python"
+    }
+}

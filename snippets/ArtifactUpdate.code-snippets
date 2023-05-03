@@ -1,0 +1,19 @@
+{
+    "Update Artifact File Data": {
+        "body": [
+            "artifact = self.tcex.api.tc.v3.artifact(id=artifact_id)",
+            "",
+            "# File Data is just one of the many properties that can be updated.",
+            "artifact.model.file_data = file_data",
+            "",
+            "artifact.update()"
+        ],
+        "description": "This snippet will update a artifacts \"File Data\" in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-artifact-update-artifact-file-data"
+        ],
+        "scope": "python"
+    }
+}

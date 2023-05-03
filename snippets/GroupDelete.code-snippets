@@ -1,0 +1,66 @@
+{
+    "Delete Group by ID": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "group.delete()"
+        ],
+        "description": "This snippet will delete a group in ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-by-id"
+        ],
+        "scope": "python"
+    },
+    "Delete Group by name": {
+        "body": [
+            "groups = self.tcex.api.tc.v3.groups()",
+            "groups.filter.summary(TqlOperator.EQ, group_name)",
+            "groups.filter.owner_name(TqlOperator.EQ, owner_name)",
+            "",
+            "# WARNING:",
+            "#     group names are NOT guaranteed to be unique, this could delete multiple groups",
+            "for group in groups:",
+            "    group.delete()"
+        ],
+        "description": "This snippet will delete a group in ThreatConnect with the provided name and in the provided owner.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-by-name"
+        ],
+        "scope": "python"
+    },
+    "Delete Group by TQL": {
+        "body": [
+            "groups = self.tcex.api.tc.v3.groups()",
+            "groups.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{group_name}\"'",
+            "",
+            "# WARNING:",
+            "#     this will delete all groups returned by the TQL",
+            "for group in groups:",
+            "    group.delete()"
+        ],
+        "description": "This snippet will delete one or more group in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-by-tql"
+        ],
+        "scope": "python"
+    },
+    "Delete Group by XID": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(xid=group_xid)",
+            "# Owner is a optional parameter to specify the owner of the group to delete.",
+            "group.delete(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will delete a group in ThreatConnect with the provided xid.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-by-xid"
+        ],
+        "scope": "python"
+    }
+}

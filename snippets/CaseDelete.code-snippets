@@ -1,0 +1,54 @@
+{
+    "Delete Case by ID": {
+        "body": [
+            "case = self.tcex.api.tc.v3.case(id=case_id)",
+            "case.delete()"
+        ],
+        "description": "This snippet will delete a case in ThreatConnect with the provided id.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-case-by-id"
+        ],
+        "scope": "python"
+    },
+    "Delete Case by Name": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "",
+            "cases.filter.name(TqlOperator.EQ, case_name)",
+            "cases.filter.owner_name(TqlOperator.EQ, owner_name)",
+            "",
+            "# WARNING:",
+            "#     Depending on the filters provided it is not guaranteed that only one case",
+            "#     will be returned. This could delete multiple cases.",
+            "for case in cases:",
+            "    case.delete()"
+        ],
+        "description": "This snippet will delete a case in ThreatConnect with the provided name.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-case-by-name"
+        ],
+        "scope": "python"
+    },
+    "Delete Case by TQL": {
+        "body": [
+            "cases = self.tcex.api.tc.v3.cases()",
+            "cases.filter.tql.raw_tql = raw_tql  # e.g., f'name EQ \"{case_name}\"'",
+            "",
+            "# WARNING:",
+            "#     this will delete all cases returned by the TQL",
+            "for case in cases:",
+            "    case.delete()"
+        ],
+        "description": "This snippet will delete one or more case in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-cm",
+            "_tcs-cm-case-delete-case-by-tql"
+        ],
+        "scope": "python"
+    }
+}

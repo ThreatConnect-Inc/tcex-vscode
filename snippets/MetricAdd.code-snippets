@@ -1,0 +1,40 @@
+{
+    "Add Keyed Metric": {
+        "body": [
+            "metrics = self.tcex.api.tc.v2.metric(",
+            "    name=metric_name,  # e.g., Indicator Count",
+            "    description=metric_description,  # e.g., The number of indicators in the downloaded",
+            "    data_type=data_type,  # options: Sum, Count, Min, Max, First, Last, and Average",
+            "    interval=interval,  # options: Hourly, Daily, Weekly, Monthly, and Yearly",
+            "    keyed=False,  # indicates whether the data will have a keyed value",
+            ")",
+            "metrics.add_keyed(key=key, value=value, date=date, return_value=return_value)"
+        ],
+        "description": "This snippet will add a keyed metric in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-metric",
+            "_tcs-metric-metric-add-keyed-metric"
+        ],
+        "scope": "python"
+    },
+    "Add Metric": {
+        "body": [
+            "metrics = self.tcex.api.tc.v2.metric(",
+            "    name=metric_name,  # e.g., Indicator Count",
+            "    description=metric_description,  # e.g., The number of indicators in the downloaded",
+            "    data_type=data_type,  # options: Sum, Count, Min, Max, First, Last, and Average",
+            "    interval=interval,  # options: Hourly, Daily, Weekly, Monthly, and Yearly",
+            "    keyed=False,  # indicates whether the data will have a keyed value",
+            ")",
+            "metrics.add(value=value, date=date)"
+        ],
+        "description": "This snippet will add a metric in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-metric",
+            "_tcs-metric-metric-add-metric"
+        ],
+        "scope": "python"
+    }
+}

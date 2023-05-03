@@ -1,0 +1,22 @@
+{
+    "Add a Victim Asset to Group Association": {
+        "body": [
+            "# To view information on how to retrieve the victim_asset_id please see the",
+            "# \"get victim assets iteration\" or \"get victim assets\" snippet.",
+            "associated_group = self.tcex.api.tc.v3.group(id=associated_group_id)",
+            "",
+            "# Stage the association to be added upon victim update",
+            "asset = self.tcex.api.tc.v3.victim_asset(id=victim_asset_id)",
+            "asset.stage_associated_group(associated_group)",
+            "",
+            "asset.update()"
+        ],
+        "description": "This snippet will add a victim asset to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-add-a-victim-asset-to-group-association"
+        ],
+        "scope": "python"
+    }
+}

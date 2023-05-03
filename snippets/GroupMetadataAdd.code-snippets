@@ -1,0 +1,61 @@
+{
+    "Add Attribute to Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "attribute = self.tcex.api.tc.v3.group_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., An example description attribute.",
+            ")",
+            "",
+            "# Stage the attribute to be added upon group update",
+            "group.stage_attribute(attribute)",
+            "",
+            "# create group in ThreatConnect",
+            "group.update()"
+        ],
+        "description": "This snippet will add an attribute to a group in ThreatConnect using the provided attribute type and value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-attribute-to-group"
+        ],
+        "scope": "python"
+    },
+    "Add Security Label to Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "tag = self.tcex.api.tc.v3.security_label(name=security_label_name)  # e.g. \"TLP:WHITE\"",
+            "",
+            "# Stage the security label to be added upon group update",
+            "group.stage_security_label(tag)",
+            "",
+            "group.update()"
+        ],
+        "description": "This snippet will add a security label to a group in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-security-label-to-group"
+        ],
+        "scope": "python"
+    },
+    "Add Tag to Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "tag = self.tcex.api.tc.v3.tag(name=tag_name)  # e.g. \"Example Tag\"",
+            "",
+            "# Stage the tag to be added upon group update",
+            "group.stage_tag(tag)",
+            "",
+            "group.update()"
+        ],
+        "description": "This snippet will add a tag to a group in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-add-tag-to-group"
+        ],
+        "scope": "python"
+    }
+}

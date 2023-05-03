@@ -1,0 +1,70 @@
+{
+    "Delete Group Attribute by Type": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "for attribute in group.attributes:",
+            "    if attribute.model.type == 'Description':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a group in ThreatConnect with the provided group id and attribute type.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-attribute-by-type"
+        ],
+        "scope": "python"
+    },
+    "Delete Group Attribute by Value": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "for attribute in group.attributes:",
+            "    if attribute.model.value == 'An example description attribute':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a group in ThreatConnect with the provided group id and attribute value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-delete-group-attribute-by-value"
+        ],
+        "scope": "python"
+    },
+    "Remove Security Label from Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "for security_label in group.security_labels:",
+            "    if security_label.model.name == label_name:  # e.g. \"TLP:WHITE\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the security label from the group",
+            "        #    the \"delete()\" method will remove the security label from the system",
+            "        security_label.remove()"
+        ],
+        "description": "This snippet will remove a security label from a group in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-remove-security-label-from-group"
+        ],
+        "scope": "python"
+    },
+    "Remove Tag from Group": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "for tag in group.tags:",
+            "    if tag.model.name == tag_name:  # e.g. \"Example Tag\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the tag from the group",
+            "        #    the \"delete()\" method will remove the tag from the system",
+            "        tag.remove()"
+        ],
+        "description": "This snippet will remove a tag from a group in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-remove-tag-from-group"
+        ],
+        "scope": "python"
+    }
+}

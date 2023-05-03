@@ -1,0 +1,70 @@
+{
+    "Batch Create Group": {
+        "body": [
+            "batch = self.tcex.api.tc.v2.batch(owner=owner_name, action='Create')",
+            "ti = batch.adversary(name=group_name)",
+            "",
+            "# add associations",
+            "ti.association(group_xid=group_xid)",
+            "",
+            "# add attributes",
+            "ti.attribute(",
+            "    attr_type=attr_type,  # e.g., 'Description'",
+            "    attr_value=attr_value,  # e.g., 'An example description attribute.'",
+            ")",
+            "",
+            "# add security labels",
+            "ti.security_label(name=security_label_name)  # e.g., \"TLP:WHITE\"",
+            "",
+            "# add tags",
+            "ti.tag(tag_name)  # e.g., \"Cyber Espionage\"",
+            "",
+            "# save the ti object to disk so that the app doesn't use excessive memory.",
+            "batch.save(ti)",
+            "",
+            "# submit the batch job",
+            "batch_status = batch.submit_all()"
+        ],
+        "description": "This snippet will create a group in ThreatConnect using the batch API feature.",
+        "prefix": [
+            "_tcs",
+            "_tcs-batch",
+            "_tcs-batch-batch-batch-create-group"
+        ],
+        "scope": "python"
+    },
+    "Batch Create Indicator": {
+        "body": [
+            "batch = self.tcex.api.tc.v2.batch(owner=owner_name, action='Create')",
+            "ti = batch.file(md5=md5, rating=rating, confidence=confidence)",
+            "",
+            "# add associations",
+            "ti.association(group_xid=group_xid)",
+            "",
+            "# add attributes",
+            "ti.attribute(",
+            "    attr_type=attr_type,  # e.g., 'Description'",
+            "    attr_value=attr_value,  # e.g., 'An example description attribute.'",
+            ")",
+            "",
+            "# add security labels",
+            "ti.security_label(name=security_label_name)  # e.g., \"TLP:WHITE\"",
+            "",
+            "# add tags",
+            "ti.tag(tag_name)  # e.g., \"Cyber Espionage\"",
+            "",
+            "# save the ti object to disk so that the app doesn't use excessive memory.",
+            "batch.save(ti)",
+            "",
+            "# submit the batch job",
+            "batch_status = batch.submit_all()"
+        ],
+        "description": "This snippet will create an indicator in ThreatConnect using the batch API feature.",
+        "prefix": [
+            "_tcs",
+            "_tcs-batch",
+            "_tcs-batch-batch-batch-create-indicator"
+        ],
+        "scope": "python"
+    }
+}

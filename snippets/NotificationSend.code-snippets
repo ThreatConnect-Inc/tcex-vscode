@@ -1,0 +1,21 @@
+{
+    "Send Notification to Organization": {
+        "body": [
+            "",
+            "notification = self.tcex.api.tc.v2.notification",
+            "notification.recipients(",
+            "    notification_type=notification_type,  # e.g., \"System Alert\"",
+            "    recipients=recipients,  # e.g., \"myuser@example.com\"",
+            "    priority=priority,  # e.g., High,",
+            ")",
+            "status = notification.send(message=message)"
+        ],
+        "description": "This snippet will send a notification to a recipient in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-notification",
+            "_tcs-notification-notification-send-notification-to-organization"
+        ],
+        "scope": "python"
+    }
+}

@@ -1,0 +1,101 @@
+{
+    "Delete a Victim Asset": {
+        "body": [
+            "victim_asset = self.tcex.api.tc.v3.victim_asset(id=victim_asset_id)",
+            "victim_asset.delete()"
+        ],
+        "description": "This snippet will delete a victim asset in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-a-victim-asset"
+        ],
+        "scope": "python"
+    },
+    "Delete a Victim Asset by Type": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "# WARNING:",
+            "#    This snippet will delete all victim assets of the provided type.",
+            "for asset in victim.victim_assets:",
+            "    if asset.model.type == asset_type:",
+            "        asset.delete()"
+        ],
+        "description": "This snippet will delete all the victim asset in a victim based on the provided type from ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-a-victim-asset-by-type"
+        ],
+        "scope": "python"
+    },
+    "Delete Victim Attribute by Type": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "for attribute in victim.attributes:",
+            "    if attribute.model.type == 'Description':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a victim in ThreatConnect with the provided victim id and attribute type.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-victim-attribute-by-type"
+        ],
+        "scope": "python"
+    },
+    "Delete Victim Attribute by Value": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "for attribute in victim.attributes:",
+            "    if attribute.model.value == 'An example description attribute':",
+            "        attribute.delete()"
+        ],
+        "description": "This snippet will delete an attribute on a victim in ThreatConnect with the provided victim id and attribute value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-delete-victim-attribute-by-value"
+        ],
+        "scope": "python"
+    },
+    "Remove Security Label from Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "for security_label in victim.security_labels:",
+            "    if security_label.model.name == label_name:  # e.g. \"TLP:WHITE\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the security label from the victim",
+            "        #    the \"delete()\" method will remove the security label from the system",
+            "        security_label.remove()"
+        ],
+        "description": "This snippet will remove a security label from a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-remove-security-label-from-victim"
+        ],
+        "scope": "python"
+    },
+    "Remove Tag from Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "for tag in victim.tags:",
+            "    if tag.model.name == tag_name:  # e.g. \"Example Tag\"",
+            "        # WARNING:",
+            "        #    the \"remove()\" method will remove the tag from the victim",
+            "        #    the \"delete()\" method will remove the tag from the system",
+            "        tag.remove()"
+        ],
+        "description": "This snippet will remove a tag from a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-remove-tag-from-victim"
+        ],
+        "scope": "python"
+    }
+}

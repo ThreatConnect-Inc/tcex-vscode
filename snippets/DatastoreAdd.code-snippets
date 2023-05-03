@@ -1,0 +1,17 @@
+{
+    "Datastore Add": {
+        "body": [
+            "# domain - local, organization, or system",
+            "# data_type - The data type descriptor (e.g., tc:whois:cache).",
+            "ds = self.tcex.api.tc.v2.datastore(domain=domain, data_type=data_type)",
+            "response = ds.add(rid='one', data={'one': 1})"
+        ],
+        "description": "This snippet will add a datastore entry in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-batch",
+            "_tcs-batch-datastore-datastore-add"
+        ],
+        "scope": "python"
+    }
+}

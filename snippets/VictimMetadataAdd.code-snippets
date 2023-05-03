@@ -1,0 +1,81 @@
+{
+    "Add Victim Asset to Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "# Please view the \"create victim with victim asset\" snippet for more information on",
+            "# creating a victim asset along with all the supported types and fields.",
+            "asset = self.tcex.api.tc.v3.victim_asset(",
+            "    type='EmailAddress', address='malware@example.com', address_type='Trojan'",
+            ")",
+            "victim.stage_victim_asset(asset)",
+            "",
+            "victim.update(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will add a victim asset to a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-add-victim-asset-to-victim"
+        ],
+        "scope": "python"
+    },
+    "Add Attribute to Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "",
+            "attribute = self.tcex.api.tc.v3.victim_attribute(",
+            "    type=attribute_type,  # e.g., Description",
+            "    value=attribute_value,  # e.g., An example description attribute.",
+            ")",
+            "",
+            "# Stage the attribute to be added upon victim update",
+            "victim.stage_attribute(attribute)",
+            "",
+            "# create victim in ThreatConnect",
+            "victim.update()"
+        ],
+        "description": "This snippet will add an attribute to a victim in ThreatConnect using the provided attribute type and value.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-add-attribute-to-victim"
+        ],
+        "scope": "python"
+    },
+    "Add Security Label to Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "tag = self.tcex.api.tc.v3.security_label(name=security_label_name)  # e.g. \"TLP:WHITE\"",
+            "",
+            "# Stage the security label to be added upon victim update",
+            "victim.stage_security_label(tag)",
+            "",
+            "victim.update()"
+        ],
+        "description": "This snippet will add a security label to a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-add-security-label-to-victim"
+        ],
+        "scope": "python"
+    },
+    "Add Tag to Victim": {
+        "body": [
+            "victim = self.tcex.api.tc.v3.victim(id=victim_id)",
+            "tag = self.tcex.api.tc.v3.tag(name=tag_name)  # e.g. \"Example Tag\"",
+            "",
+            "# Stage the tag to be added upon victim update",
+            "victim.stage_tag(tag)",
+            "",
+            "victim.update()"
+        ],
+        "description": "This snippet will add a tag to a victim in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-victim-add-tag-to-victim"
+        ],
+        "scope": "python"
+    }
+}

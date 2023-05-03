@@ -1,0 +1,20 @@
+{
+    "Update Indicator": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "",
+            "# update the indicator rating",
+            "indicator.model.rating = rating",
+            "",
+            "# update the indicator in ThreatConnect",
+            "indicator.update()"
+        ],
+        "description": "This snippet will update an indicator in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-update-indicator"
+        ],
+        "scope": "python"
+    }
+}

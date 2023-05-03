@@ -1,0 +1,19 @@
+{
+    "Add an Indicator to Group Association": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(id=indicator_id)",
+            "associated_group = self.tcex.api.tc.v3.group(id=associated_group_id)",
+            "",
+            "# Stage the association to be added upon indicator update",
+            "indicator.stage_associated_group(associated_group)",
+            "indicator.update()"
+        ],
+        "description": "This snippet will add an indicator to group association.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-add-an-indicator-to-group-association"
+        ],
+        "scope": "python"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "Upload Group Attachment": {
+        "body": [
+            "group = self.tcex.api.tc.v3.group(id=group_id)",
+            "",
+            "# Only [\"Document\", \"Report\"] group types support attachments.",
+            "response = group.upload(file_content)",
+            "if not response.ok:",
+            "    print(f'The upload failed: {response.reason}')"
+        ],
+        "description": "This snippet will upload a file attachment to a group in ThreatConnect.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-group-upload-group-attachment"
+        ],
+        "scope": "python"
+    }
+}

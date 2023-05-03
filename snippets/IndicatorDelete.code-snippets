@@ -1,0 +1,33 @@
+{
+    "Delete Indicator by ID": {
+        "body": [
+            "indicator = self.tcex.api.tc.v3.indicator(summary=indicator_summary)",
+            "indicator.delete(params={'owner': owner_name})"
+        ],
+        "description": "This snippet will delete an indicator in ThreatConnect with the provided summary and owner name.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-delete-indicator-by-id"
+        ],
+        "scope": "python"
+    },
+    "Delete Indicator by TQL": {
+        "body": [
+            "indicators = self.tcex.api.tc.v3.indicators()",
+            "indicators.filter.tql.raw_tql = raw_tql  # e.g., f'summary EQ \"{indicator_summary}\"'",
+            "",
+            "# WARNING:",
+            "#     this will delete all indicators returned by the TQL",
+            "for indicator in indicators:",
+            "    indicator.delete()"
+        ],
+        "description": "This snippet will delete one or more indicator in ThreatConnect with the provided TQL.",
+        "prefix": [
+            "_tcs",
+            "_tcs-ti",
+            "_tcs-ti-indicator-delete-indicator-by-tql"
+        ],
+        "scope": "python"
+    }
+}
