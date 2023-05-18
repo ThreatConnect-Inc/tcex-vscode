@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { HelloWorldPanel } from "./panels/HelloWorldPanel";
+import { AppBuilderPanel } from "./panels/AppBuilderPanel";
 
 import { findFilesInWorkspace } from './utilities/findFilesInWorkspace';
 import { AppSpecWatcher } from './appSpecWatcher';
@@ -13,10 +13,27 @@ const specToolTerminal = new TerminalManager({
 });
 
 export function activate(context: vscode.ExtensionContext) {
+    // see if we have an app_spec and if we don't, prompt user to generate it.
+    findFilesInWorkspace('app_spec.yml').then((files) => {
+        if (files.length === 0) {
+            const actions = [{ title: 'Yes', action: 'generate'}];
+
+            vscode.window.showInformationMessage(
+                'No app_spec.yml found. Would you like to generate one?',
+                { modal: false } as vscode.MessageOptions,
+                ...actions
+                ).then((selection) => {
+                    if (selection === actions[0]) {
+                        vscode.commands.executeCommand('tcex-appbuilder.app_spec.app_spec');
+                    }
+                });
+        }
+    });
+
     // Register the command
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.showAppInfo', () => {
         findFilesInWorkspace('app_spec.yml').then((files) => {
-            AppSpecWatcher.register(HelloWorldPanel.render(context.extensionUri));
+            AppSpecWatcher.register(AppBuilderPanel.render(context.extensionUri));
         });
     }));
 
@@ -35,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {
     AppSpecWatcher.dispose();
-    HelloWorldPanel.dispose();
+    AppBuilderPanel.dispose();
     TcExStatusBarItem.dispose();
     specToolTerminal.dispose();
 }
