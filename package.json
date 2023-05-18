@@ -2,6 +2,7 @@
     "name": "tcex-vscode",
     "displayName": "ThreatConnect App Builder",
     "description": "",
+    "publisher": "ThreatConnect, Inc.",
     "icon": "assets/icon.png",
     "version": "0.0.1",
     "engines": {
