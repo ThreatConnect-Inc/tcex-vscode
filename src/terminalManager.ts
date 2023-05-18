@@ -15,6 +15,13 @@ export class TerminalManager {
         });
     }
 
+    withTerminal(callback: (terminal: vscode.Terminal) => void) {
+        const terminal = this.terminal;
+        setTimeout(() => {
+            callback(terminal);
+        }, 1500);
+    }
+
     get terminal(): vscode.Terminal {
         if (!this._terminal) {
             this._terminal = vscode.window.createTerminal(this.options);

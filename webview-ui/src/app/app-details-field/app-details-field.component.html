@@ -2,7 +2,8 @@
     <div *ngSwitchCase="'option'" class="dropdown-container">
         <label for="runtimeLevel-dropdown">{{ label }}</label>
         <vscode-dropdown id="runtimeLevel-dropdown" disabled>
-            <vscode-option *ngFor="let option of options" [value]="option.value" [selected]="option.value === value">
+            <vscode-option *ngFor="let option of options" [value]="option.value"
+                [selected]="option.value.toLowerCase() === value.toLowerCase()">
                 {{ option.name }}
             </vscode-option>
         </vscode-dropdown>

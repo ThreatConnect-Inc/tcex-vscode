@@ -1,6 +1,6 @@
 {
     "name": "tcex-vscode",
-    "displayName": "ThreatConnect App Builder",
+    "displayName": "ThreatConnect Exchange App Framework",
     "description": "",
     "publisher": "ThreatConnect, Inc.",
     "icon": "assets/icon.png",
@@ -39,9 +39,49 @@
                     "light": "./assets/icon.png",
                     "dark": "./assets/icon.png"
                 }
+            },
+            {
+                "command": "tcex-appbuilder.deps",
+                "title": "TcEx: Install App Dependencies",
+                "icon": {
+                    "light": "./assets/icon.png",
+                    "dark": "./assets/icon.png"
+                }
+            },
+            {
+                "command": "tcex-appbuilder.package",
+                "title": "TcEx: Package App",
+                "icon": {
+                    "light": "./assets/icon.png",
+                    "dark": "./assets/icon.png"
+                }
+            },
+            {
+                "command": "tcex-appbuilder.deploy",
+                "title": "TcEx: Deploy App",
+                "icon": {
+                    "light": "./assets/icon.png",
+                    "dark": "./assets/icon.png"
+                }
             }
         ],
+        "configuration": {
+            "title": "TcEx",
+            "properties": {
+                "tcex.enableDeploy": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable deploy command."
+                }
+            }
+        },
         "menus": {
+            "commandPalette": [
+                {
+                    "command": "tcex-appbuilder.deploy",
+                    "when": "config.tcex.enableDeploy"
+                }
+            ],
             "editor/context": [
                 {
                     "command": "tcex-appbuilder.showAppInfo",

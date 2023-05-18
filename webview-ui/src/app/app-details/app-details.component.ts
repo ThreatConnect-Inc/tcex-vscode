@@ -99,8 +99,24 @@ export class AppDetailsComponent implements OnChanges {
         {
             'name': 'Organization',
             'value': 'organization',
-        }
-    ]
+        },
+        {
+            'name': 'System',
+            'value': 'system',
+        },
+        {
+            'name': 'API Service',
+            'value': 'apiservice',
+        },
+        {
+            'name': 'Custom Trigger Service',
+            'value': 'triggerservice',
+        },
+        {
+            'name': 'Webhook Trigger Service',
+            'value': 'webhooktriggerservice',
+        },
+    ];
 
     readonly excludedFields = [
         'internalNotes',

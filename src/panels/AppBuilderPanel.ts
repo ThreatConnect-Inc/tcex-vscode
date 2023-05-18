@@ -78,7 +78,7 @@ export class AppBuilderPanel implements AppSpecObserver {
     public static render(extensionUri: Uri): AppBuilderPanel {
         if (AppBuilderPanel.currentPanel) {
             // If the webview panel already exists reveal it
-            AppBuilderPanel.currentPanel._panel.reveal(ViewColumn.One);
+            AppBuilderPanel.currentPanel._panel.reveal(ViewColumn.Two);
         } else {
             // If a webview panel does not already exist create and show a new one
             const panel = window.createWebviewPanel(
@@ -87,7 +87,7 @@ export class AppBuilderPanel implements AppSpecObserver {
                 // Panel title
                 "TcEx App Builder",
                 // The editor column the panel should be displayed in
-                ViewColumn.One,
+                ViewColumn.Two,
                 // Extra panel configurations
                 {
                     // Enable JavaScript in the webview

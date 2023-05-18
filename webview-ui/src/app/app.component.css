@@ -11,7 +11,8 @@ vscode-tag {
 }
 
 .banner {
-    background-color: rgb(244, 246, 248);
+    /* background-color: rgb(244, 246, 248); */
+    background: linear-gradient(to right top, rgba(250,212,136,1) 0%, rgba(142,185,238,1) 100%);
     border-radius: 18px;
     height: 50px;
     padding: 20px;

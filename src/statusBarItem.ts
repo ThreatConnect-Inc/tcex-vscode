@@ -12,13 +12,15 @@ export class TcExStatusBarItem  implements AppSpecObserver {
 
     private constructor() {
         this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-        this.depsWatcher = vscode.workspace.createFileSystemWatcher(new vscode.RelativePattern(vscode.workspace.workspaceFolders![0], 'deps/**'));
+        this.depsWatcher = vscode.workspace.createFileSystemWatcher('**/deps/tcex/*');
 
-        this.depsWatcher.onDidChange((uri) => {
-            this.loadTcExVersion();
-        });
+        // this.depsWatcher.onDidChange((uri) =>  this.loadTcExVersion());
 
-        this.loadTcExVersion();
+        // this.depsWatcher.onDidCreate((uri) =>  this.loadTcExVersion());
+
+        // this.depsWatcher.onDidDelete((uri) =>  this.loadTcExVersion());
+
+        setInterval(() => this.loadTcExVersion(), 30_000);  // check every 30 seconds.
     }
 
     private loadTcExVersion() {
@@ -28,8 +30,10 @@ export class TcExStatusBarItem  implements AppSpecObserver {
             (_error, stdout, _stderr) => {
                 if (stdout && /^\d+\.\d+\.\d+$/.test(stdout.trim())) {
                     this.tcexVersion = stdout.trim();
-                    this.updateStatusBarItem();
+                } else {
+                    this.tcexVersion = undefined;
                 }
+                this.updateStatusBarItem();
             });
     }
 
@@ -40,12 +44,27 @@ export class TcExStatusBarItem  implements AppSpecObserver {
     }
 
     public updateStatusBarItem() {
-        this.statusBarItem.text = `$(threatconnect-icon) ${this.appSpec.displayName} (${this.appSpec.programVersion})`;
+        this.statusBarItem.text = `$(threatconnect-icon)${this.appSpec.displayName} (${this.appSpec.programVersion})`;
+        const tooltip = new vscode.MarkdownString(`App TcEx Version: ${this.tcexVersion || 'Not Installed'}`);
+        tooltip.appendMarkdown('\n\n---\n\n');
+        tooltip.appendMarkdown('[$(debug-start)Install App Dependencies](command:tcex-appbuilder.deps)\n\n');
+        tooltip.appendMarkdown('[$(debug-start)Package App](command:tcex-appbuilder.package)\n\n');
+        tooltip.appendMarkdown('[$(debug-start)Regenerate All Files](command:tcex-appbuilder.app_spec.all)\n\n');
+        if (vscode.workspace.getConfiguration('tcex').get('enableDeploy')) {
+            tooltip.appendMarkdown('[$(debug-start)Deploy App](command:tcex-appbuilder.deploy)\n\n');
+
+        }
+
+
+        tooltip.isTrusted = true;
+        tooltip.supportThemeIcons = true;
+
+        this.statusBarItem.tooltip = tooltip;
         this.statusBarItem.command = 'tcex-appbuilder.showAppInfo';
-        if (this.tcexVersion) {
-            this.statusBarItem.tooltip = `TcEx Version: ${this.tcexVersion}`;
-        } else {
-            this.statusBarItem.tooltip = 'TcEx Version: N/A (Run "tcex deps" to install dependencies)';
+        this.statusBarItem.backgroundColor = undefined;
+
+        if (!this.appSpec || !this.tcexVersion) {
+            this.statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
         }
     }
 
