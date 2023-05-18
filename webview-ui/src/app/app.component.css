@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+vscode-tag {
+    margin: 0 0.5rem;
+}
+
+.banner {
+    background-color: rgb(244, 246, 248);
+    border-radius: 18px;
+    height: 50px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #082530;
+}

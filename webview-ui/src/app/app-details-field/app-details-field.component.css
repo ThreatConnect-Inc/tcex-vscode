@@ -1,0 +1,35 @@
+.dropdown-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.array-item {
+    margin-right: 5px;
+}
+
+.dropdown-container label {
+    display: block;
+    color: var(--vscode-foreground);
+    cursor: pointer;
+    font-size: var(--vscode-font-size);
+    line-height: normal;
+    margin-bottom: 2px;
+}
+
+.details-container {
+    margin: 10px;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+textarea {
+    height: 100px;
+}

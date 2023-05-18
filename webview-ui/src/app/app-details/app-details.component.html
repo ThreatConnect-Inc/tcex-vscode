@@ -1,0 +1,74 @@
+<main *ngIf="details && appSpec">
+    <div class="row">
+        <app-app-details-field *ngIf="details.displayName" [label]="details.displayName.label"
+            [type]="details.displayName.type" [value]="appSpec[details.displayName.key]"
+            [options]="details.displayName.options">
+        </app-app-details-field>
+
+        <app-app-details-field *ngIf="details.programVersion" [label]="details.programVersion.label"
+            [type]="details.programVersion.type" [value]="appSpec[details.programVersion.key]"
+            [options]="details.programVersion.options">
+        </app-app-details-field>
+
+        <app-app-details-field *ngIf="details.runtimeLevel" [label]="details.runtimeLevel.label"
+            [type]="details.runtimeLevel.type" [value]="appSpec[details.runtimeLevel.key]"
+            [options]="details.runtimeLevel.options">
+        </app-app-details-field>
+
+        <app-app-details-field *ngIf="details.packageName" [label]="details.packageName.label"
+            [type]="details.packageName.type" [value]="appSpec[details.packageName.key]"
+            [options]="details.packageName.options">
+        </app-app-details-field>
+    </div>
+    <div class="row">
+        <app-app-details-field *ngIf="details.features" [label]="details.features.label" [type]="details.features.type"
+            [value]="appSpec[details.features.key]" [options]="details.features.options">
+        </app-app-details-field>
+
+        <app-app-details-field *ngIf="details.labels" [label]="details.labels.label" [type]="details.labels.type"
+            [value]="appSpec[details.labels.key]" [options]="details.labels.options">
+        </app-app-details-field>
+    </div>
+
+    <div class="row">
+        <app-app-details-field *ngIf="details.note" [label]="details.note.label" [type]="details.note.type"
+            [value]="appSpec[details.note.key]" [options]="details.note.options">
+        </app-app-details-field>
+    </div>
+
+    <div class="row">
+        <app-app-details-field *ngFor="let field of details.otherFields" [label]="field.label" [type]="field.type"
+            [value]="appSpec[field.key]" [options]="field.options">
+        </app-app-details-field>
+    </div>
+
+    <!-- <span *ngFor="let field of fields">
+        <div class="details-container" [ngSwitch]="field.type">
+            <vscode-text-field *ngSwitchCase="'text'" [value]="appSpec[field.key]" readonly>
+                {{ field.label }}
+            </vscode-text-field>
+            <div *ngSwitchCase="'option'" class="dropdown-container">
+                <label for="runtimeLevel-dropdown">{{ field.label }}</label>
+                <vscode-dropdown id="runtimeLevel-dropdown" readonly>
+                    <vscode-option *ngFor="let option of field.options" [value]="option.value"
+                        [selected]="option.value === appSpec[field.key]">
+                        {{ option.name }}
+                    </vscode-option>
+                </vscode-dropdown>
+            </div>
+            <vscode-text-area *ngSwitchCase="'textarea'" [value]="appSpec.note" cols="70"
+                readonly>Note</vscode-text-area>
+            <div *ngSwitchCase="'array'">
+                <div>
+                    <label [for]="'array-' + field.key">{{ field.label }}</label>
+                </div>
+                <vscode-tag *ngFor="let value of asArray(appSpec[field.key])" [id]="'array-' + field.key"
+                    class="array-item">{{ value
+                    }}</vscode-tag>
+            </div>
+            <div *ngSwitchDefault>
+                <h1>no match {{ field.type }}</h1>
+            </div>
+        </div>
+    </span> -->
+</main>

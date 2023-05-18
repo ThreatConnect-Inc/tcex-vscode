@@ -1,0 +1,22 @@
+<div class="details-container" [ngSwitch]="type" *ngIf="type && value && label">
+    <div *ngSwitchCase="'option'" class="dropdown-container">
+        <label for="runtimeLevel-dropdown">{{ label }}</label>
+        <vscode-dropdown id="runtimeLevel-dropdown" disabled>
+            <vscode-option *ngFor="let option of options" [value]="option.value" [selected]="option.value === value">
+                {{ option.name }}
+            </vscode-option>
+        </vscode-dropdown>
+    </div>
+    <vscode-text-area *ngSwitchCase="'textarea'" [value]="value" cols="70" readonly>Note</vscode-text-area>
+    <div *ngSwitchCase="'array'">
+        <div>
+            <label>{{ label }}</label>
+        </div>
+        <vscode-tag *ngFor="let value of asArray(value)" class="array-item">{{
+            value
+            }}</vscode-tag>
+    </div>
+    <vscode-text-field *ngSwitchDefault [value]="value" readonly>
+        {{ label }}
+    </vscode-text-field>
+</div>
