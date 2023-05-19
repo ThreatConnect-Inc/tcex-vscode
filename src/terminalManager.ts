@@ -15,11 +15,14 @@ export class TerminalManager {
         });
     }
 
-    withTerminal(callback: (terminal: vscode.Terminal) => void) {
-        const terminal = this.terminal;
-        setTimeout(() => {
-            callback(terminal);
-        }, 1500);
+    withTerminal(): Promise<vscode.Terminal> {
+        return new Promise((resolve) => {
+            const terminal = this.terminal;
+            setTimeout(() => {
+                resolve(terminal);
+            }, 1500);
+
+        });
     }
 
     get terminal(): vscode.Terminal {

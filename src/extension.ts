@@ -31,36 +31,38 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     // Register the command
-    context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.showAppInfo', () => {
-        findFilesInWorkspace('app_spec.yml').then((files) => {
-            AppSpecWatcher.register(AppBuilderPanel.render(context.extensionUri));
-        });
-    }));
+    context.subscriptions.push(vscode.commands.registerCommand(
+        'tcex-appbuilder.showAppInfo',
+        () => {
+            findFilesInWorkspace('app_spec.yml').then((files) => {
+                AppSpecWatcher.register(AppBuilderPanel.render(context.extensionUri));
+            });
+        }));
 
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.app_spec.app_spec', () => {
-        specToolTerminal.withTerminal((terminal) => {
+        specToolTerminal.withTerminal().then((terminal) => {
             terminal.sendText('tcex spec-tool --app-spec');
             terminal.show();
         });
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.app_spec.all', () => {
-        specToolTerminal.withTerminal((terminal) => {
+        specToolTerminal.withTerminal().then((terminal) => {
             terminal.sendText('tcex spec-tool --install-json --layout-json --tcex-json');
             terminal.show();
         });
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.deps', () => {
-        specToolTerminal.withTerminal((terminal) => {
+        specToolTerminal.withTerminal().then((terminal) => {
             terminal.sendText('tcex deps');
             terminal.show();
         });
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.package', () => {
-        specToolTerminal.withTerminal((terminal) => {
-            terminal.sendText(`tcex packages ${lastDeployTarget}`);
+        specToolTerminal.withTerminal().then((terminal) => {
+            terminal.sendText(`tcex package`);
             terminal.show();
         });
     }));
@@ -69,10 +71,19 @@ export function activate(context: vscode.ExtensionContext) {
     let lastDeployTarget: string;
 
     context.subscriptions.push(vscode.commands.registerCommand('tcex-appbuilder.deploy', () => {
-        specToolTerminal.withTerminal((terminal) => {
-            terminal.sendText(`tcex deploy ${lastDeployTarget}`);
-            terminal.show();
-        });
+        vscode.window.showInputBox(
+            {
+                title: 'Enter ThreatConnect Deploy Target',
+                value: lastDeployTarget
+            }).then((value) => {
+                if (value) {
+                    lastDeployTarget = value;
+                    specToolTerminal.withTerminal().then((terminal) => {
+                        terminal.sendText(`tcex deploy ${lastDeployTarget}`);
+                        terminal.show();
+                    });
+                }
+            });
     }));
 
     context.subscriptions.push(AppSpecWatcher);
