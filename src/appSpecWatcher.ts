@@ -11,7 +11,7 @@ export interface AppSpecObserver {
 
 export class AppSpecWatcher implements AppSpecObserver {
     private static instance?: AppSpecWatcher;
-    private static readonly  appYamlUri: vscode.Uri = vscode.Uri.joinPath(vscode.workspace.workspaceFolders![0].uri, 'app_spec.yml');
+    private static readonly appYamlUri: vscode.Uri = vscode.Uri.joinPath(vscode.workspace.workspaceFolders![0].uri, 'app_spec.yml');
 
     private observers: WeakRef<AppSpecObserver>[] = [];
     private appYamlWatcher: vscode.FileSystemWatcher;
@@ -33,18 +33,33 @@ export class AppSpecWatcher implements AppSpecObserver {
                 });
             }
         });
+        this.appYamlWatcher.onDidDelete((uri) => {
+            if (uri.toString() === AppSpecWatcher.appYamlUri.toString()) {
+                vscode.workspace.openTextDocument(AppSpecWatcher.appYamlUri).then((document) => {
+                    this.appYaml = yaml.parse(document.getText());
+                });
+            }
+        });
+        this.appYamlWatcher.onDidCreate((uri) => {
+            if (uri.toString() === AppSpecWatcher.appYamlUri.toString()) {
+                vscode.workspace.openTextDocument(AppSpecWatcher.appYamlUri).then((document) => {
+                    this.appYaml = yaml.parse(document.getText());
+                });
+            }
+        });
     }
+
     onAppSpecChange(appSpec: any): void {
-        const actions = [{ title: 'Regenerate Files', action: 'regenerate'}];
+        const actions = [{ title: 'Regenerate Files', action: 'regenerate' }];
         vscode.window.showInformationMessage(
             'app_spec.yml changed, would you like to regenerate the files?',
             { modal: false } as vscode.MessageOptions,
             ...actions
-            ).then((selection) => {
-                if (selection === actions[0]) {
-                    vscode.commands.executeCommand('tcex-appbuilder.app_spec.all');
-                }
-            });
+        ).then((selection) => {
+            if (selection === actions[0]) {
+                vscode.commands.executeCommand('tcex-appbuilder.app_spec.all');
+            }
+        });
     }
 
     private set appYaml(appYaml: any) {
@@ -80,7 +95,7 @@ export class AppSpecWatcher implements AppSpecObserver {
 
     private _regsiter(observer: AppSpecObserver, sendCurrent: boolean = true) {
         this.observers.push(new WeakRef(observer));
-        if (this.appYaml && sendCurrent){
+        if (this.appYaml && sendCurrent) {
             observer.onAppSpecChange(this.appYaml);
         }
     }

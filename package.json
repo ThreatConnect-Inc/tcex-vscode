@@ -68,10 +68,10 @@
         "configuration": {
             "title": "TcEx",
             "properties": {
-                "tcex.enableDeploy": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Enable deploy command."
+                "tcex.deployTarget": {
+                    "type": "string",
+                    "default": null,
+                    "description": "TcEx Deploy Target."
                 }
             }
         },

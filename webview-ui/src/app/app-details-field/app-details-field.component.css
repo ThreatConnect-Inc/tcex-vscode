@@ -5,8 +5,9 @@
     align-items: flex-start;
     justify-content: flex-start;
 }
+
 .array-item {
-    margin-right: 5px;
+    margin: 5px 5px;
 }
 
 .dropdown-container label {

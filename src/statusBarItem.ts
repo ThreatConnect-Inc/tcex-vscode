@@ -1,24 +1,24 @@
 import * as vscode from 'vscode';
 import { AppSpecObserver } from './appSpecWatcher';
 
-import { exec} from 'child_process';
+import { exec } from 'child_process';
 
-export class TcExStatusBarItem  implements AppSpecObserver {
+export class TcExStatusBarItem implements AppSpecObserver {
     private static instance?: TcExStatusBarItem;
     private statusBarItem: vscode.StatusBarItem;
-    private depsWatcher: vscode.FileSystemWatcher;
+    // private depsWatcher: vscode.FileSystemWatcher;
     private tcexVersion?: string;
     private appSpec: any;
+    private disposables: vscode.Disposable[] = [];
 
     private constructor() {
         this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-        this.depsWatcher = vscode.workspace.createFileSystemWatcher('**/deps/tcex/*');
 
-        // this.depsWatcher.onDidChange((uri) =>  this.loadTcExVersion());
+        this.disposables.push(this.statusBarItem);
 
-        // this.depsWatcher.onDidCreate((uri) =>  this.loadTcExVersion());
-
-        // this.depsWatcher.onDidDelete((uri) =>  this.loadTcExVersion());
+        this.disposables.push(vscode.workspace.onDidChangeConfiguration((e) => {
+            this.updateStatusBarItem();
+        }));
 
         setInterval(() => this.loadTcExVersion(), 30_000);  // check every 30 seconds.
     }
@@ -39,14 +39,26 @@ export class TcExStatusBarItem  implements AppSpecObserver {
 
     public onAppSpecChange(appSpec: any): void {
         this.appSpec = appSpec;
-        this.updateStatusBarItem();
-        this.statusBarItem.show();
+        if (this.appSpec) {
+            this.updateStatusBarItem();
+            this.statusBarItem.show();
+        } else {
+            this.statusBarItem.hide();
+        }
+
     }
 
     public updateStatusBarItem() {
         this.statusBarItem.text = `$(threatconnect-icon)${this.appSpec.displayName} (${this.appSpec.programVersion})`;
-        const tooltip = new vscode.MarkdownString(`App TcEx Version: ${this.tcexVersion || 'Not Installed'}`);
-        tooltip.appendMarkdown('\n\n---\n\n');
+        const tooltip = new vscode.MarkdownString();
+
+        if (!this.tcexVersion) {
+            tooltip.appendMarkdown('$(alert)No tcex found.  [Install](command:tcex-appbuilder.deps) dependencies.\n\n');
+        }
+        if (this.tcexVersion) {
+            tooltip.appendMarkdown(`App TcEx Version: ${this.tcexVersion}\n\n`);
+        }
+        tooltip.appendMarkdown('\n\n\n\n---\n\n');
         tooltip.appendMarkdown('[$(debug-start)Install App Dependencies](command:tcex-appbuilder.deps)\n\n');
         tooltip.appendMarkdown('[$(debug-start)Package App](command:tcex-appbuilder.package)\n\n');
         tooltip.appendMarkdown('[$(debug-start)Regenerate All Files](command:tcex-appbuilder.app_spec.all)\n\n');
@@ -78,8 +90,9 @@ export class TcExStatusBarItem  implements AppSpecObserver {
 
     public static dispose() {
         if (this.instance) {
-            this.instance.depsWatcher.dispose();
-            this.instance.statusBarItem.dispose();
+            for (const disposable of this.instance.disposables) {
+                disposable.dispose();
+            }
         }
         this.instance = undefined;
     }
