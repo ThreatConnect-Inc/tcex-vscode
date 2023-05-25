@@ -1,7 +1,10 @@
 import * as vscode from 'vscode';
 import * as yaml from 'yaml';
 
-import isEqual = require('lodash.isequal');
+import { findFilesInWorkspace } from './utilities/findFilesInWorkspace';
+
+
+import isEqual = require('lodash.isequal');  // deep equals comparison
 
 
 
@@ -18,7 +21,6 @@ export class AppSpecWatcher implements AppSpecObserver {
     private _appYaml: any;
 
     private constructor() {
-
         vscode.workspace.openTextDocument(AppSpecWatcher.appYamlUri).then((document) => {
             this.appYaml = yaml.parse(document.getText());
             this._regsiter(this, false);

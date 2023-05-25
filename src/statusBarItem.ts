@@ -57,7 +57,7 @@ export class TcExStatusBarItem implements AppSpecObserver {
     }
 
     public updateStatusBarItem() {
-        this.statusBarItemApp.text = `${this.appSpec.displayName} (${this.appSpec.programVersion})`;
+        this.statusBarItemApp.text = `${this.appSpec?.displayName} (${this.appSpec?.programVersion})`;
         const tooltip = new vscode.MarkdownString();
 
         if (!this.tcexVersion) {

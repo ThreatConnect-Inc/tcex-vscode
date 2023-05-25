@@ -1,313 +1,325 @@
 {
-    "name": "tcex-vscode",
-    "displayName": "ThreatConnect Exchange App Framework",
-    "description": "",
-    "publisher": "ThreatConnect, Inc.",
-    "icon": "assets/icon.png",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.75.0"
-    },
-    "main": "./out/extension.js",
-    "activationEvents": [
-        "workspaceContains:app_spec.yml",
-        "workspaceContains:install.json",
-        "workspaceContains:tcex.json"
+  "name": "tcex-vscode",
+  "displayName": "ThreatConnect Exchange App Framework",
+  "description": "",
+  "publisher": "ThreatConnect, Inc.",
+  "icon": "assets/icon.png",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "workspaceContains:app_spec.yml",
+    "workspaceContains:install.json",
+    "workspaceContains:tcex.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "tcex-appbuilder.run",
+        "title": "TcEx: Run App",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.listCommands",
+        "title": "TcEx: List Commands",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.showAppInfo",
+        "title": "TcEx: Show App Info",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.app_spec.app_spec",
+        "title": "TcEx: Generate App Spec",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.app_spec.all",
+        "title": "TcEx: Generate All",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.deps",
+        "title": "TcEx: Install App Dependencies",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.package",
+        "title": "TcEx: Package App",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      },
+      {
+        "command": "tcex-appbuilder.deploy",
+        "title": "TcEx: Deploy App",
+        "icon": {
+          "light": "./assets/icon.png",
+          "dark": "./assets/icon.png"
+        }
+      }
     ],
-    "contributes": {
-        "commands": [
-            {
-                "command": "tcex-appbuilder.listCommands",
-                "title": "TcEx: List Commands",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.showAppInfo",
-                "title": "TcEx: Show App Info",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.app_spec.app_spec",
-                "title": "TcEx: Generate App Spec",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.app_spec.all",
-                "title": "TcEx: Generate All",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.deps",
-                "title": "TcEx: Install App Dependencies",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.package",
-                "title": "TcEx: Package App",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            },
-            {
-                "command": "tcex-appbuilder.deploy",
-                "title": "TcEx: Deploy App",
-                "icon": {
-                    "light": "./assets/icon.png",
-                    "dark": "./assets/icon.png"
-                }
-            }
+    "configuration": {
+      "title": "TcEx",
+      "properties": {
+        "tcex.deployTarget": {
+          "type": "string",
+          "default": null,
+          "description": "TcEx Deploy Target."
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "tcex-appbuilder.deploy",
+          "when": "config.tcex.enableDeploy"
+        },
+        {
+          "command": "tcex-appbuilder.run",
+          "when": "tcex.appInputsJsonExists"
+        },
+        {
+          "command": "tcex-appbuilder.listCommands",
+          "when": "1 == 0"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "tcex-appbuilder.showAppInfo",
+          "when": "editorLangId == python || editorLangId == yaml || editorLangId == json",
+          "group": "markdown-preview-enhanced"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "tcex-appbuilder.showAppInfo",
+          "when": "editorLangId == python || editorLangId == yaml || editorLangId == json",
+          "group": "navigation"
+        }
+      ]
+    },
+    "icons": {
+      "threatconnect-icon": {
+        "description": "ThreatConnect icons",
+        "default": {
+          "fontPath": "./assets/fonts/tcicon.woff",
+          "fontCharacter": "\\E900"
+        }
+      }
+    },
+    "jsonValidation": [
+      {
+        "fileMatch": [
+          "install.json"
         ],
-        "configuration": {
-            "title": "TcEx",
-            "properties": {
-                "tcex.deployTarget": {
-                    "type": "string",
-                    "default": null,
-                    "description": "TcEx Deploy Target."
-                }
-            }
-        },
-        "menus": {
-            "commandPalette": [
-                {
-                    "command": "tcex-appbuilder.deploy",
-                    "when": "config.tcex.enableDeploy"
-                },
-                {
-                    "command": "tcex-appbuilder.listCommands",
-                    "when": "1 == 0"
-                }
-            ],
-            "editor/context": [
-                {
-                    "command": "tcex-appbuilder.showAppInfo",
-                    "when": "editorLangId == python || editorLangId == yaml || editorLangId == json",
-                    "group": "markdown-preview-enhanced"
-                }
-            ],
-            "editor/title": [
-                {
-                    "command": "tcex-appbuilder.showAppInfo",
-                    "when": "editorLangId == python || editorLangId == yaml || editorLangId == json",
-                    "group": "navigation"
-                }
-            ]
-        },
-        "icons": {
-            "threatconnect-icon": {
-                "description": "ThreatConnect icons",
-                "default": {
-                    "fontPath": "./assets/fonts/tcicon.woff",
-                    "fontCharacter": "\\E900"
-                }
-            }
-        },
-        "jsonValidation": [
-            {
-                "fileMatch": [
-                    "install.json"
-                ],
-                "url": "./schemas/install-json-schema.json"
-            },
-            {
-                "fileMatch": [
-                    "layout.json"
-                ],
-                "url": "./schemas/layout-json-schema.json"
-            },
-            {
-                "fileMatch": [
-                    "tcex.json"
-                ],
-                "url": "./schemas/tcex-json-schema.json"
-            }
+        "url": "./schemas/install-json-schema.json"
+      },
+      {
+        "fileMatch": [
+          "layout.json"
         ],
-        "snippets": [
-            {
-                "path": "./snippets/VictimMetadataGet.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupUpload.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseMetadataAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimUpdate.code-snippets"
-            },
-            {
-                "path": "./snippets/DatastoreAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseAssociationRemove.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimGet.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorMetadataGet.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseAssociationAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/ArtifactUpdate.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorCreate.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseGet.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorAssociationAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseUpdate.code-snippets"
-            },
-            {
-                "path": "./snippets/MetricAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupDownload.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupAssociationAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorAssociationRemove.code-snippets"
-            },
-            {
-                "path": "./snippets/ArtifactAssociationAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/DatastoreDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimAssociationRemove.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimAssociationAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupMetadataGet.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupCreate.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorGet.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimMetadataDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/DatastoreGet.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupUpdate.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseMetadataGet.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimMetadataAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/BatchCreate.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseCreate.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupMetadataDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorMetadataAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseMetadataDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupAssociationRemove.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorMetadataDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/IndicatorUpdate.code-snippets"
-            },
-            {
-                "path": "./snippets/NotificationSend.code-snippets"
-            },
-            {
-                "path": "./snippets/CaseDelete.code-snippets"
-            },
-            {
-                "path": "./snippets/VictimCreate.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupGet.code-snippets"
-            },
-            {
-                "path": "./snippets/GroupMetadataAdd.code-snippets"
-            },
-            {
-                "path": "./snippets/DatastoreUpdate.code-snippets"
-            }
-        ]
-    },
-    "scripts": {
-        "install:all": "npm install && cd webview-ui && npm install",
-        "start:webview": "cd webview-ui && npm run start",
-        "build:webview": "cd webview-ui && npm run build",
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts"
-    },
-    "devDependencies": {
-        "@types/glob": "^7.1.3",
-        "@types/lodash.isequal": "^4.5.6",
-        "@types/node": "^12.11.7",
-        "@types/vscode": "^1.46.0",
-        "@typescript-eslint/eslint-plugin": "^4.14.1",
-        "@typescript-eslint/parser": "^4.14.1",
-        "eslint": "^7.19.0",
-        "glob": "^7.1.6",
-        "prettier": "^2.2.1",
-        "typescript": "^4.1.3",
-        "vscode-test": "^1.5.0"
-    },
-    "dependencies": {
-        "lodash.isequal": "^4.5.0",
-        "yaml": "^2.2.2"
-    },
-    "repository": "https://github.com/ThreatConnect-Inc/tcex-vscode"
+        "url": "./schemas/layout-json-schema.json"
+      },
+      {
+        "fileMatch": [
+          "tcex.json"
+        ],
+        "url": "./schemas/tcex-json-schema.json"
+      }
+    ],
+    "snippets": [
+      {
+        "path": "./snippets/VictimMetadataGet.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupUpload.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseMetadataAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimUpdate.code-snippets"
+      },
+      {
+        "path": "./snippets/DatastoreAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseAssociationRemove.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimGet.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorMetadataGet.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseAssociationAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/ArtifactUpdate.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorCreate.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseGet.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorAssociationAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseUpdate.code-snippets"
+      },
+      {
+        "path": "./snippets/MetricAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupDownload.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupAssociationAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorAssociationRemove.code-snippets"
+      },
+      {
+        "path": "./snippets/ArtifactAssociationAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/DatastoreDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimAssociationRemove.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimAssociationAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupMetadataGet.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupCreate.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorGet.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimMetadataDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/DatastoreGet.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupUpdate.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseMetadataGet.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimMetadataAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/BatchCreate.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseCreate.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupMetadataDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorMetadataAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseMetadataDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupAssociationRemove.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorMetadataDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/IndicatorUpdate.code-snippets"
+      },
+      {
+        "path": "./snippets/NotificationSend.code-snippets"
+      },
+      {
+        "path": "./snippets/CaseDelete.code-snippets"
+      },
+      {
+        "path": "./snippets/VictimCreate.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupGet.code-snippets"
+      },
+      {
+        "path": "./snippets/GroupMetadataAdd.code-snippets"
+      },
+      {
+        "path": "./snippets/DatastoreUpdate.code-snippets"
+      }
+    ]
+  },
+  "scripts": {
+    "install:all": "npm install && cd webview-ui && npm install",
+    "start:webview": "cd webview-ui && npm run start",
+    "build:webview": "cd webview-ui && npm run build",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/lodash.isequal": "^4.5.6",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.46.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  },
+  "dependencies": {
+    "lodash.isequal": "^4.5.0",
+    "yaml": "^2.2.2"
+  },
+  "repository": "https://github.com/ThreatConnect-Inc/tcex-vscode"
 }

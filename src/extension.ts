@@ -31,6 +31,22 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
+    findFilesInWorkspace('app_inputs.json').then((files) => {
+        vscode.commands.executeCommand('setContext', 'tcex.appInputsJsonExists', files.length !== 0);
+    });
+
+    const appInputJsonWatcher = vscode.workspace.createFileSystemWatcher('**/app_inputs.json');
+
+    appInputJsonWatcher.onDidDelete(() => {
+        vscode.commands.executeCommand('setContext', 'tcex.appInputsJsonExists', false);
+    });
+
+    appInputJsonWatcher.onDidCreate(() => {
+        vscode.commands.executeCommand('setContext', 'tcex.appInputsJsonExists', true);
+    });
+
+    context.subscriptions.push(appInputJsonWatcher);
+
     // Register the commands
     context.subscriptions.push(vscode.commands.registerCommand(
         'tcex-appbuilder.showAppInfo',
@@ -89,6 +105,12 @@ export function activate(context: vscode.ExtensionContext) {
         'tcex-appbuilder.package',
         terminalCommand(
             'tcex package',
+            tcexTerminal)));
+
+    context.subscriptions.push(vscode.commands.registerCommand(
+        'tcex-appbuilder.run',
+        terminalCommand(
+            'tcex run',
             tcexTerminal)));
 
 
