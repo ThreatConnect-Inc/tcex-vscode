@@ -17,6 +17,14 @@
     "contributes": {
         "commands": [
             {
+                "command": "tcex-appbuilder.listCommands",
+                "title": "TcEx: List Commands",
+                "icon": {
+                    "light": "./assets/icon.png",
+                    "dark": "./assets/icon.png"
+                }
+            },
+            {
                 "command": "tcex-appbuilder.showAppInfo",
                 "title": "TcEx: Show App Info",
                 "icon": {

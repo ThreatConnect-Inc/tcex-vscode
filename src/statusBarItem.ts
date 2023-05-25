@@ -5,16 +5,24 @@ import { exec } from 'child_process';
 
 export class TcExStatusBarItem implements AppSpecObserver {
     private static instance?: TcExStatusBarItem;
-    private statusBarItem: vscode.StatusBarItem;
+    private statusBarItemApp: vscode.StatusBarItem;
+    private statusBarItemLogo: vscode.StatusBarItem;
+
     // private depsWatcher: vscode.FileSystemWatcher;
     private tcexVersion?: string;
     private appSpec: any;
     private disposables: vscode.Disposable[] = [];
 
     private constructor() {
-        this.statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+        this.statusBarItemApp = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+        this.statusBarItemLogo = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
 
-        this.disposables.push(this.statusBarItem);
+        this.statusBarItemLogo.text = '$(threatconnect-icon)';
+        this.statusBarItemLogo.command = 'tcex-appbuilder.listCommands';
+        this.statusBarItemLogo.show();
+
+        this.disposables.push(this.statusBarItemApp);
+        this.disposables.push(this.statusBarItemLogo);
 
         this.disposables.push(vscode.workspace.onDidChangeConfiguration((e) => {
             this.updateStatusBarItem();
@@ -41,42 +49,45 @@ export class TcExStatusBarItem implements AppSpecObserver {
         this.appSpec = appSpec;
         if (this.appSpec) {
             this.updateStatusBarItem();
-            this.statusBarItem.show();
+            this.statusBarItemApp.show();
         } else {
-            this.statusBarItem.hide();
+            this.statusBarItemApp.hide();
         }
 
     }
 
     public updateStatusBarItem() {
-        this.statusBarItem.text = `$(threatconnect-icon)${this.appSpec.displayName} (${this.appSpec.programVersion})`;
+        this.statusBarItemApp.text = `${this.appSpec.displayName} (${this.appSpec.programVersion})`;
         const tooltip = new vscode.MarkdownString();
 
         if (!this.tcexVersion) {
             tooltip.appendMarkdown('$(alert)No tcex found.  [Install](command:tcex-appbuilder.deps) dependencies.\n\n');
         }
+        if (!this.appSpec) {
+            tooltip.appendMarkdown('$(alert)No app_spec found.  [Generate](command:tcex-appbuilder.app_spec.app_spec) app_spec.\n\n');
+        }
         if (this.tcexVersion) {
             tooltip.appendMarkdown(`App TcEx Version: ${this.tcexVersion}\n\n`);
         }
-        tooltip.appendMarkdown('\n\n\n\n---\n\n');
-        tooltip.appendMarkdown('[$(debug-start)Install App Dependencies](command:tcex-appbuilder.deps)\n\n');
-        tooltip.appendMarkdown('[$(debug-start)Package App](command:tcex-appbuilder.package)\n\n');
-        tooltip.appendMarkdown('[$(debug-start)Regenerate All Files](command:tcex-appbuilder.app_spec.all)\n\n');
-        if (vscode.workspace.getConfiguration('tcex').get('enableDeploy')) {
-            tooltip.appendMarkdown('[$(debug-start)Deploy App](command:tcex-appbuilder.deploy)\n\n');
+        // tooltip.appendMarkdown('\n\n\n\n---\n\n');
+        // tooltip.appendMarkdown('[$(debug-start)Install App Dependencies](command:tcex-appbuilder.deps)\n\n');
+        // tooltip.appendMarkdown('[$(debug-start)Package App](command:tcex-appbuilder.package)\n\n');
+        // tooltip.appendMarkdown('[$(debug-start)Regenerate All Files](command:tcex-appbuilder.app_spec.all)\n\n');
+        // if (vscode.workspace.getConfiguration('tcex').get('enableDeploy')) {
+        //     tooltip.appendMarkdown('[$(debug-start)Deploy App](command:tcex-appbuilder.deploy)\n\n');
 
-        }
+        // }
 
 
         tooltip.isTrusted = true;
         tooltip.supportThemeIcons = true;
 
-        this.statusBarItem.tooltip = tooltip;
-        this.statusBarItem.command = 'tcex-appbuilder.showAppInfo';
-        this.statusBarItem.backgroundColor = undefined;
+        this.statusBarItemApp.tooltip = tooltip;
+        this.statusBarItemApp.command = 'tcex-appbuilder.showAppInfo';
+        this.statusBarItemApp.backgroundColor = undefined;
 
         if (!this.appSpec || !this.tcexVersion) {
-            this.statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
+            this.statusBarItemApp.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
         }
     }
 

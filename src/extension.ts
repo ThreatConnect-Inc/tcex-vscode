@@ -31,13 +31,40 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    // Register the command
+    // Register the commands
     context.subscriptions.push(vscode.commands.registerCommand(
         'tcex-appbuilder.showAppInfo',
         () => {
             findFilesInWorkspace('app_spec.yml').then((files) => {
                 AppSpecWatcher.register(AppBuilderPanel.render(context.extensionUri));
             });
+        }));
+
+    context.subscriptions.push(vscode.commands.registerCommand(
+        'tcex-appbuilder.listCommands',
+        () => {
+            vscode.window.showQuickPick(
+                [
+                    'TcEx: Install App Dependencies',
+                    'TcEx: Package App',
+                    'TcEx: Generate All',
+                    'TcEx: Show App Info',
+                ]).then((selection) => {
+                    switch (selection) {
+                        case 'TcEx: Install App Dependencies':
+                            vscode.commands.executeCommand('tcex-appbuilder.deps');
+                            break;
+                        case 'TcEx: Package App':
+                            vscode.commands.executeCommand('tcex-appbuilder.package');
+                            break;
+                        case 'TcEx: Generate All':
+                            vscode.commands.executeCommand('tcex-appbuilder.app_spec.all');
+                            break;
+                        case 'TcEx: Show App Info':
+                            vscode.commands.executeCommand('tcex-appbuilder.showAppInfo');
+                            break;
+                    }
+                });
         }));
 
     context.subscriptions.push(vscode.commands.registerCommand(
