@@ -90,6 +90,12 @@
                     "when": "config.tcex.enableDeploy"
                 }
             ],
+            "commandPalette": [
+                {
+                    "command": "tcex-appbuilder.listCommands",
+                    "when": "1 == 0"
+                }
+            ],
             "editor/context": [
                 {
                     "command": "tcex-appbuilder.showAppInfo",
