@@ -2,7 +2,6 @@ import { Disposable, Webview, WebviewPanel, window, Uri, ViewColumn } from "vsco
 import * as vscode from 'vscode';
 import { getUri } from "../utilities/getUri";
 import { getNonce } from "../utilities/getNonce";
-import * as yaml from 'yaml';
 import { AppSpecObserver } from "../appSpecWatcher";
 
 const outputTypes = ["String", "StringArray", "KeyValue", "KeyValueArray", "TCEntity", "TCEntityArray"];
@@ -85,7 +84,7 @@ export class AppBuilderPanel implements AppSpecObserver {
                 // Panel view type
                 "showHelloWorld",
                 // Panel title
-                "TcEx App Builder",
+                "TcEx App Framework",
                 // The editor column the panel should be displayed in
                 ViewColumn.Two,
                 // Extra panel configurations
@@ -195,7 +194,7 @@ export class AppBuilderPanel implements AppSpecObserver {
                                         type: outputType
                                     });
                                     vscode.workspace.fs.writeFile(this._appYaml, Buffer.from(JSON.stringify(this.appYaml, null, 4))).then(() => {
-                                        this.webview.postMessage({ command: "appConfig", installJson: this.appYaml});
+                                        this.webview.postMessage({ command: "appConfig", installJson: this.appYaml });
                                     });
                                 }
                             });

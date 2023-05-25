@@ -88,9 +88,7 @@
                 {
                     "command": "tcex-appbuilder.deploy",
                     "when": "config.tcex.enableDeploy"
-                }
-            ],
-            "commandPalette": [
+                },
                 {
                     "command": "tcex-appbuilder.listCommands",
                     "when": "1 == 0"
