@@ -11,7 +11,8 @@ import { deployCommand, terminalCommand } from './commands/command';
 export function activate(context: vscode.ExtensionContext) {
     const tcexTerminal = new TerminalManager({
         cwd: vscode.workspace.workspaceFolders?.[0].uri.fsPath,
-        name: '$(threatconnect-icon)TcEx',
+        name: 'TcEx',
+        iconPath: new vscode.ThemeIcon('threatconnect-icon'),
     });
 
     // see if we have an app_spec and if we don't, prompt user to generate it.
