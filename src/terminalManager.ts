@@ -15,22 +15,18 @@ export class TerminalManager {
         });
     }
 
-    withTerminal(): Promise<vscode.Terminal> {
-        return new Promise((resolve) => {
-            const terminal = this.terminal;
-            setTimeout(() => {
-                resolve(terminal);
-            }, 1500);
-
-        });
-    }
-
-    get terminal(): vscode.Terminal {
+    get terminal(): Thenable<vscode.Terminal> {
         if (!this._terminal) {
             this._terminal = vscode.window.createTerminal(this.options);
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(this._terminal!);
+                }, 1500);
+
+            });
         }
 
-        return this._terminal;
+        return new Promise((resolve) => this._terminal!);
     }
 
     public dispose() {

@@ -4,7 +4,7 @@
   "description": "",
   "publisher": "ThreatConnect, Inc.",
   "icon": "assets/icon.png",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha3",
   "engines": {
     "vscode": "^1.75.0"
   },
@@ -95,7 +95,7 @@
       "commandPalette": [
         {
           "command": "tcex-appbuilder.deploy",
-          "when": "config.tcex.enableDeploy"
+          "when": "config.tcex.deployTarget"
         },
         {
           "command": "tcex-appbuilder.run",

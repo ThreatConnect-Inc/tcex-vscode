@@ -1,7 +1,8 @@
 import { error } from 'console';
 import * as vscode from 'vscode';
 
-export function findFilesInWorkspace(pattern: string): Thenable<vscode.Uri[]>{
+
+export function findFilesInWorkspace(pattern: string): Thenable<vscode.Uri[]> {
 
     return new Promise((resolve, reject) => {
         const workspaceFolder = vscode.workspace.workspaceFolders?.[0];

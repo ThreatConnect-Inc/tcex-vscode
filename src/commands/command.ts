@@ -5,7 +5,7 @@ import { TerminalManager } from "../terminalManager";
 export function terminalCommand(command: string, terminalManager: TerminalManager): () => Thenable<void> {
     return () => {
         return new Promise((resolve, reject) => {
-            terminalManager.withTerminal().then(
+            terminalManager.terminal.then(
                 (terminal) => {
                     terminal.sendText(command);
                     terminal.show();
@@ -28,7 +28,7 @@ export function deployCommand(terminalManager: TerminalManager, defaultDeployTar
 
                     if (value) {
                         _defaultDeployTarget = value;
-                        terminalManager.withTerminal().then(
+                        terminalManager.terminal.then(
                             (terminal) => {
                                 terminal.sendText(`tcex deploy ${_defaultDeployTarget}`);
                                 terminal.show();
