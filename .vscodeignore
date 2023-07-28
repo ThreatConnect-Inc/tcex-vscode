@@ -1,0 +1,8 @@
+**/*.ts
+**/tsconfig*.json
+**/.vscode
+.gitignore
+.history
+DEV.md
+webview-ui/node_modules
+webview-ui/src
