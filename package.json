@@ -147,7 +147,7 @@
       "threatconnect-icon": {
         "description": "ThreatConnect icons",
         "default": {
-          "fontPath": "./assets/fonts/tcicon.woff",
+          "fontPath": "./tcicon.woff",
           "fontCharacter": "\\E900"
         }
       }

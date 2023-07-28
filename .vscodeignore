@@ -7,4 +7,12 @@ DEV.md
 assets
 webview-ui/.angular
 webview-ui/node_modules
-webview-ui/src
+webview-ui/src/app
+webview-ui/src/environments
+webview-ui/src/*.ts
+webview-ui/src/*.json
+webview-ui/src/*.html
+webview-ui/src/*.css
+webview-ui/*.json
+webview-ui/*.js
+webview-ui/*.md
