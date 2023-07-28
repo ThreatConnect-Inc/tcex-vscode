@@ -1,103 +1,101 @@
 <div class="banner">
-    <img src="assets/images/logo.png" style="height: 40px;" />
+  <img src="/logo.png" style="height: 40px" />
 </div>
 
 <main *ngIf="appSpec">
-    <vscode-panels>
-        <vscode-panel-tab>APP DETAILS</vscode-panel-tab>
-        <vscode-panel-tab>INPUTS</vscode-panel-tab>
-        <vscode-panel-tab>OUTPUTS</vscode-panel-tab>
-        <vscode-panel-view>
-            <app-app-details [app-spec]="appSpec"></app-app-details>
-        </vscode-panel-view>
-        <vscode-panel-view>
-            <div style="display: block">
-                <div *ngFor="let section of appSpec.sections">
-                    <h2>{{ section.sectionName }}</h2>
-                    <vscode-data-grid aria-label="Default">
-                        <vscode-data-grid-row row-type="header">
-                            <vscode-data-grid-cell cellType="header" grid-column="1">
-                                Label
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell cellType="header" grid-column="2">
-                                Name
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell cellType="header" grid-column="3">
-                                Data Type(s)
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell cellType="header" grid-column="4">
-                                UI Element
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell cellType="header" grid-column="5">
-                                Display
-                            </vscode-data-grid-cell>
-                        </vscode-data-grid-row>
-                        <vscode-data-grid-row *ngFor="let param of section.params"
-                            (click)="sendToClipboard('input', param)">
-                            <vscode-data-grid-cell grid-column="1">
-                                <div>{{ param.label }}</div>
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell grid-column="2">
-                                <div>{{ param.name }}</div>
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell grid-column="3">
-                                <div *ngIf="param.playbookDataType">
-                                    <vscode-tag *ngFor="let type of param.playbookDataType">
-                                        {{ type }}
-                                    </vscode-tag>
-                                </div>
-                                <div *ngIf="!param.playbookDataType">
-                                    <span [ngSwitch]="param.type || 'String'">
-                                        <vscode-tag *ngSwitchCase="'String' || 'EditChoice'">String</vscode-tag>
-                                    </span>
-                                </div>
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell grid-column="4">
-                                {{ param.type || 'String' }}
-                            </vscode-data-grid-cell>
-                            <vscode-data-grid-cell grid-column="5">
-                                {{ param.display || 'N/A' }}
-                            </vscode-data-grid-cell>
-                        </vscode-data-grid-row>
-                    </vscode-data-grid>
+  <vscode-panels>
+    <vscode-panel-tab>APP DETAILS</vscode-panel-tab>
+    <vscode-panel-tab>INPUTS</vscode-panel-tab>
+    <vscode-panel-tab>OUTPUTS</vscode-panel-tab>
+    <vscode-panel-view>
+      <app-app-details [app-spec]="appSpec"></app-app-details>
+    </vscode-panel-view>
+    <vscode-panel-view>
+      <div style="display: block">
+        <div *ngFor="let section of appSpec.sections">
+          <h2>{{ section.sectionName }}</h2>
+          <vscode-data-grid aria-label="Default">
+            <vscode-data-grid-row row-type="header">
+              <vscode-data-grid-cell cellType="header" grid-column="1">
+                Label
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell cellType="header" grid-column="2">
+                Name
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell cellType="header" grid-column="3">
+                Data Type(s)
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell cellType="header" grid-column="4">
+                UI Element
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell cellType="header" grid-column="5">
+                Display
+              </vscode-data-grid-cell>
+            </vscode-data-grid-row>
+            <vscode-data-grid-row
+              *ngFor="let param of section.params"
+              (click)="sendToClipboard('input', param)"
+            >
+              <vscode-data-grid-cell grid-column="1">
+                <div>{{ param.label }}</div>
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell grid-column="2">
+                <div>{{ param.name }}</div>
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell grid-column="3">
+                <div *ngIf="param.playbookDataType">
+                  <vscode-tag *ngFor="let type of param.playbookDataType">
+                    {{ type }}
+                  </vscode-tag>
                 </div>
-            </div>
-
-        </vscode-panel-view>
-        <vscode-panel-view>
-            <div style="display: block;">
-                <div *ngIf="appSpec.outputData">
-                    <div *ngFor="let section of appSpec.outputData">
-                        <h2>{{ section.display }}</h2>
-                        <vscode-data-grid aria-label="Default">
-                            <vscode-data-grid-row row-type="header">
-                                <vscode-data-grid-cell cellType="header" grid-column="1">
-                                    Name
-                                </vscode-data-grid-cell>
-                                <vscode-data-grid-cell cellType="header" grid-column="2">
-                                    Data Type
-                                </vscode-data-grid-cell>
-                            </vscode-data-grid-row>
-                            <vscode-data-grid-row *ngFor="let output of section.outputVariables"
-                                (click)="sendToClipboard('output', output)">
-                                <vscode-data-grid-cell grid-column="1">
-                                    {{ output.name }}
-                                </vscode-data-grid-cell>
-                                <vscode-data-grid-cell grid-column="2">
-                                    <vscode-tag>{{ output.type || 'String' }}</vscode-tag>
-                                </vscode-data-grid-cell>
-                            </vscode-data-grid-row>
-                        </vscode-data-grid>
-                    </div>
+                <div *ngIf="!param.playbookDataType">
+                  <span [ngSwitch]="param.type || 'String'">
+                    <vscode-tag *ngSwitchCase="'String' || 'EditChoice'"
+                      >String</vscode-tag
+                    >
+                  </span>
                 </div>
-            </div>
-        </vscode-panel-view>
-
-    </vscode-panels>
-
-
-
-
-
-
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell grid-column="4">
+                {{ param.type || "String" }}
+              </vscode-data-grid-cell>
+              <vscode-data-grid-cell grid-column="5">
+                {{ param.display || "N/A" }}
+              </vscode-data-grid-cell>
+            </vscode-data-grid-row>
+          </vscode-data-grid>
+        </div>
+      </div>
+    </vscode-panel-view>
+    <vscode-panel-view>
+      <div style="display: block">
+        <div *ngIf="appSpec.outputData">
+          <div *ngFor="let section of appSpec.outputData">
+            <h2>{{ section.display }}</h2>
+            <vscode-data-grid aria-label="Default">
+              <vscode-data-grid-row row-type="header">
+                <vscode-data-grid-cell cellType="header" grid-column="1">
+                  Name
+                </vscode-data-grid-cell>
+                <vscode-data-grid-cell cellType="header" grid-column="2">
+                  Data Type
+                </vscode-data-grid-cell>
+              </vscode-data-grid-row>
+              <vscode-data-grid-row
+                *ngFor="let output of section.outputVariables"
+                (click)="sendToClipboard('output', output)"
+              >
+                <vscode-data-grid-cell grid-column="1">
+                  {{ output.name }}
+                </vscode-data-grid-cell>
+                <vscode-data-grid-cell grid-column="2">
+                  <vscode-tag>{{ output.type || "String" }}</vscode-tag>
+                </vscode-data-grid-cell>
+              </vscode-data-grid-row>
+            </vscode-data-grid>
+          </div>
+        </div>
+      </div>
+    </vscode-panel-view>
+  </vscode-panels>
 </main>

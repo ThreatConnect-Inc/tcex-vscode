@@ -42,64 +42,64 @@
         "command": "tcex-appbuilder.run",
         "title": "TcEx: Run App",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.listCommands",
         "title": "TcEx: List Commands",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.showAppInfo",
         "title": "TcEx: Show App Info",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.app_spec.app_spec",
         "title": "TcEx: Generate App Spec",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.app_spec.all",
         "title": "TcEx: Generate All",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.deps",
         "title": "TcEx: Install App Dependencies",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.package",
         "title": "TcEx: Package App",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       },
       {
         "command": "tcex-appbuilder.deploy",
         "title": "TcEx: Deploy App",
         "icon": {
-          "light": "./assets/icon.png",
-          "dark": "./assets/icon.png"
+          "light": "./icon.png",
+          "dark": "./icon.png"
         }
       }
     ],
