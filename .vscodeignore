@@ -4,5 +4,6 @@
 .gitignore
 .history
 DEV.md
+webview-ui/.angular
 webview-ui/node_modules
 webview-ui/src
